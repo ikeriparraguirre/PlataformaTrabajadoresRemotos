@@ -1,0 +1,33 @@
+body{
+    background-color: #1A1717;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.container{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+@media screen and (max-width: 768px) {
+    .logo{
+        text-align: center;
+        margin: 10%;
+    }
+    .logo-tasiva{
+        width: 60%;
+    }   
+}
+@media screen and (min-width: 769px) {
+    .logo{
+        text-align: left;
+    }
+    .logo-tasiva{
+        width: 25%;
+    }
+}
+.form-group>label, .form-group>a{
+    color: #70BADF;
+    font-weight: normal;
+    font-style: italic;
+}
+.form-group>a{
+    text-decoration: underline;
+}
