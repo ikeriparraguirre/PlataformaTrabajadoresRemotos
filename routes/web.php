@@ -2,7 +2,9 @@
 
 use App\Models\Archivo;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,4 +20,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });*/
-Route::get('/', 'App\Http\Controllers\UsuarioController@index');
+
+/* Especificamos las rutas de nuestro sitio web y despues con el middleware especificamos si pueden acceder los logeados o no logeados. */
+Route::get('/', function(){
+    return view("login");
+})->middleware('guest');
+Route::get('/archivos', function(){
+    return view('archivos');
+})->middleware('auth');
+Route::get('/registro', function(){
+    return view('registro');
+})->middleware('guest');
+
+Route::post('/', [UsuarioController::class, 'crearSesion'])->name('crearSesion');
+Route::post('/registro', [UsuarioController::class, 'registrarUsuario'])->name('registro.registrarUsuario');
+Route::get('/cerrarSesion', [UsuarioController::class, 'cerrarSesion'])->name('cerrarSesion.cerrarSesion');

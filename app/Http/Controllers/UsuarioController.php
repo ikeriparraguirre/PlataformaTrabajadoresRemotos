@@ -3,21 +3,37 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UsuarioController extends Controller
 {
-    public function index()
+    public function registrarUsuario()
     {
-        $usuario = User::all();
-        return view('login', ['usuario' => $usuario]);
+        //Completar el validate para que solo sea valido si las dos contraseñas son las mismas.
+        $this->validate(request(), [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required',
+            'confirmar-password' => 'required'
+        ]);
+        $usuario = User::create(request(['name', 'email', 'password']));
+        Auth::login($usuario);
+        return redirect()->to('/archivos');
     }
-    public function devolverUsuario(Request $request)
-    {
+
+    public function crearSesion(){
+        if (auth()->attempt(request(['email', 'password'])) == false) {
+            return back()->withErrors([
+                'message' => 'El correo o la contraseña no son correctas.'
+            ]);
+        }
+        else{
+            return redirect()->to('/archivos');
+        }
     }
-    public function devolverContraseña(Request $request)
-    {
-    }
-    public function registrarUsuario(Request $request)
-    {
+
+    public function cerrarSesion(){
+        auth()->logout();
+        return redirect()->to('/');
     }
 }
