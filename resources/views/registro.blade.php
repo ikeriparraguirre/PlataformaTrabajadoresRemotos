@@ -22,8 +22,8 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="logo">
+    <div class="col-sm-6 formulario">
+        <div class="logo text-center">
             <img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva" alt="logotipo de la empresa Tasiva Vision">
         </div>
         <div class="registro">
@@ -34,34 +34,37 @@
                     <input type="text" name="name" class="form-control" id="nombre" aria-describedby="nombre">
                 </div>
                 @error('name')
-                <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
                 <div class="form-group">
                     <label for="correo-electronico">Correo electronico</label>
                     <input type="email" name="email" class="form-control" id="correo-electronico" aria-describedby="Correo electronico">
                 </div>
                 @error('email')
-                <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
                 <div class="form-group">
                     <label for="contraseña">Contraseña</label>
                     <input type="password" name="password" class="form-control" id="contraseña">
                 </div>
                 @error('password')
-                <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
                 <div class="form-group">
                     <label for="contraseña">Confirmar Contraseña</label>
                     <input type="password" name="confirmar-password" class="form-control" id="contraseña">
                 </div>
                 @error('confirmar-password')
-                <div class="alert alert-danger" role="alert">{{ $message }}</div>
+                <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
-                <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-right"></i></button>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary btn-registrarse"><i class="bi bi-caret-right"></i></button>
+                </div>
             </form>
             {{ Auth::user() }}
         </div>
     </div>
+    <div class="col-sm-6 imagen">
 </body>
 
 </html>

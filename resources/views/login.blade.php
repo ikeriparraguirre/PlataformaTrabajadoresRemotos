@@ -30,7 +30,7 @@
             <form method="POST" class="formulario-inicio-sesion">
                 @csrf
                 <div class="form-group">
-                    <label for="nombre-usuario">Correo electronico</label>
+                    <label for="correo-electronico">Correo electronico</label>
                     <input type="email" name="email" class="form-control" id="correo-electronico" aria-describedby="Correo electronico">
                 </div>
                 <div class="form-group">
