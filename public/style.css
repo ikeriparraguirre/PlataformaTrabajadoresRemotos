@@ -1,33 +1,100 @@
-body{
+body {
     background-color: #1A1717;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-.container{
+
+.container {
     margin-left: 10%;
     margin-right: 10%;
 }
+
 @media screen and (max-width: 768px) {
-    .logo{
-        text-align: center;
+    .logo {
         margin: 10%;
     }
-    .logo-tasiva{
+
+    .logo-tasiva {
         width: 60%;
-    }   
-}
-@media screen and (min-width: 769px) {
-    .logo{
-        text-align: left;
     }
-    .logo-tasiva{
+
+    .iniciar-sesion{
+        margin: 5%;
+    }
+
+    .btn-iniciar-sesion {
+        padding: 6%;
+        border-radius: 40%;
+    }
+
+    .bi-caret-right::before {
+        transform: scale(2);
+    }
+
+    .direccion {
+        color: #70BADF;
+    }
+    .imagen{
+        display: none;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .logo {
+        margin: 2%;
+        transform: scale(1.5);
+    }
+
+    .logo-tasiva {
         width: 25%;
     }
+    .imagen{
+        width: 100%;
+    }
+    .foto-camara{
+        max-width: 100%;
+    }
+    .imagen{
+        width: 50%;
+        height: 100vh;
+        background-image: url('images/foto_camara.jpg');
+        background-size: 100% 100%;
+    }
+    .formulario{
+        padding: 3%;
+    }
+    .form-group input{
+        width: 50%;
+    }
+    .formulario-inicio-sesion{
+        margin: auto;
+        width: 80%;
+        transform: scale(1.5);
+        margin-top: 20%;
+    }
+    .form-group label, .form-group input{
+        margin-left: 25%;
+    }
+    .btn-iniciar-sesion {
+        margin-top: 5%;
+        transform: scale(2);
+    }
+    .bi-caret-right::before {
+        transform: scale(1.5);
+    }
+    .mensaje-error{
+        width: 50%;
+        margin: auto;
+        margin-bottom: 2%;
+    }
 }
-.form-group>label, .form-group>a{
+
+.form-group>label,
+.form-group>a {
     color: #70BADF;
     font-weight: normal;
     font-style: italic;
 }
-.form-group>a{
+
+.form-group>a {
     text-decoration: underline;
 }

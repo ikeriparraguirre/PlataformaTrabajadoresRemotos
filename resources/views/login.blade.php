@@ -22,8 +22,8 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="logo">
+    <div class="col-sm-6 formulario">
+        <div class="logo text-center">
             <img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva" alt="logotipo de la empresa Tasiva Vision">
         </div>
         <div class="iniciar-sesion">
@@ -38,14 +38,18 @@
                     <input type="password" name="password" class="form-control" id="contraseña">
                 </div>
                 @error('message')
-                <div class="alert alert-danger m-2" role="alert">Correo electronico o contraseña incorrecta.</div>
+                <div class="alert alert-danger m-2 mensaje-error" role="alert">Correo electronico o contraseña incorrecta.</div>
                 @enderror
-                <div class="form-group resgistrarse">
-                    <a href="registro" class="link-primary registrarse">Registrarse</a>
+                <div class="form-group text-center registrarse">
+                    <a href="registro" class="link-primary btn-registrarse">Registrarse</a>
                 </div>
-                <button type="submit" class="btn btn-primary"><i class="bi bi-arrow-right"></i></button>
+                <div class="col-12 text-center">
+                    <button type="submit" class="btn btn-primary btn-iniciar-sesion"><i class="bi bi-caret-right"></i></button>
+                </div>
             </form>
         </div>
+    </div>
+    <div class="col-sm-6 imagen">
     </div>
 </body>
 
