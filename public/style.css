@@ -1,5 +1,5 @@
 body {
-    background-color: #1A1717;
+    background-color: #2a2a2a;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -149,6 +149,7 @@ body {
         font-weight: normal;
         font-style: italic;
         font-size: 2rem;
+        margin-left: 1%;
     }
 
     /* Para que aplique los mismos estilos al texto y al icono. */
@@ -161,6 +162,7 @@ body {
         height: 5vh;
         border-radius: 30px;
         margin-top: 5%;
+        overflow: hidden;
     }
 
     .texto-btn-subir {
@@ -168,7 +170,7 @@ body {
     }
 
     .icono-texto-subir {
-        padding-top: 1vh;
+        padding-top: 0.5vh;
         color: #FFFFFF;
     }
 
@@ -177,7 +179,7 @@ body {
     }
 
     .navbar-subir {
-        height: 5%;
+        height: 6%;
         background-color: #736A61;
         width: 80%;
         margin: auto;
@@ -390,6 +392,7 @@ body {
         font-weight: normal;
         font-style: italic;
         font-size: 2rem;
+        margin-left: 1%;
     }
 
     /* Para que aplique los mismos estilos al texto y al icono. */
@@ -474,24 +477,37 @@ input[type="search"]::placeholder {
     margin: auto;
 }
 
+.actual {
+    color: #70BADF;
+}
+
+.subir,
+.archivos,
+.cerrar-sesion {
+    color: #FFFFFF;
+}
+
 .bi-cloud-arrow-up {
     font-size: 333%;
     margin-right: 5%;
-    color: #FFFFFF;
     margin: auto;
 }
 
 .bi-cloud-arrow-down-fill {
     font-size: 333%;
     margin-right: 5%;
-    color: #70BADF;
 }
 
 .bi-x {
     font-size: 333%;
     margin-right: 5%;
-    color: #FFFFFF;
 }
-a:link, a:visited, a:active {
-    text-decoration:none;
+#nombre-archivo{
+    border-radius: 30px;
+}
+
+.boton-subir>a:link,
+.boton-subir>a:visited,
+.boton-subir>a:active {
+    text-decoration: none;
 }

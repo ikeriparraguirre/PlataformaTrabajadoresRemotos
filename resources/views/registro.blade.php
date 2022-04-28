@@ -30,7 +30,7 @@
             <form method="POST" class="formulario-registro">
                 @csrf
                 <div class="form-group">
-                    <label for="correo-electronico">Nombre</label>
+                    <label for="nombre">Nombre</label>
                     <input type="text" name="name" class="form-control" id="nombre" aria-describedby="nombre">
                 </div>
                 @error('name')
@@ -51,8 +51,8 @@
                 <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
                 <div class="form-group">
-                    <label for="contraseña">Confirmar Contraseña</label>
-                    <input type="password" name="confirmar-password" class="form-control" id="contraseña">
+                    <label for="confirmar-contraseña">Confirmar Contraseña</label>
+                    <input type="password" name="confirmar-password" class="form-control" id="confirmar-contraseña">
                 </div>
                 @error('confirmar-password')
                 <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>

@@ -48,13 +48,13 @@
         <div class="navbar-subir">
             <div class="text-center botones">
                 <div class="primero">
-                    <a href="{{ url('/subir') }}" class="subir"><i class="bi bi-cloud-arrow-up"></i></a>
+                    <a href="{{ url('/subir') }}"><i class="bi bi-cloud-arrow-up actual"></i></a>
                 </div>
                 <div class="segundo">
-                    <a href="{{ url('/archivos') }}" class="actual"><i class="bi bi-cloud-arrow-down-fill"></i></a>
+                    <a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
                 </div>
                 <div class="tercero">
-                    <a href="{{ route('cerrarSesion.cerrarSesion') }}" class="cerrar-sesion"><i class="bi bi-x"></i></a>
+                    <a href="{{ route('cerrarSesion.cerrarSesion') }}"><i class="bi bi-x cerrar-sesion"></i></a>
                 </div>
             </div>
         </div>
