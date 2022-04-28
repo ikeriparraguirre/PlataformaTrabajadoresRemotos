@@ -86,10 +86,10 @@
         <div class="navbar">
             <div class="text-center botones">
                 <div class="primero">
-                    <a href="./subir='yes'" class="subir"><i class="bi bi-cloud-arrow-up"></i></a>
+                    <a href="{{ url('/subir') }}" class="subir"><i class="bi bi-cloud-arrow-up"></i></a>
                 </div>
                 <div class="segundo">
-                    <a href="." class="actual"><i class="bi bi-cloud-arrow-down-fill"></i></a>
+                    <a href="{{ url('/archivos') }}" class="actual"><i class="bi bi-cloud-arrow-down-fill"></i></a>
                 </div>
                 <div class="tercero">
                     <a href="{{ route('cerrarSesion.cerrarSesion') }}" class="cerrar-sesion"><i class="bi bi-x"></i></a>

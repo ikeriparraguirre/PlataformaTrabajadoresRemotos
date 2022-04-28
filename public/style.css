@@ -104,8 +104,90 @@ body {
         font-size: 20px;
         text-align: right;
     }
+
     .bi-download {
         vertical-align: top;
+    }
+
+    /* Estilos para la pagina de subir archivos */
+    .borde-subir-archivos {
+        width: 60%;
+        margin: auto;
+        height: 20vh;
+        border-radius: 20px;
+        border: 2px solid #70BADF;
+        border-style: dashed;
+    }
+
+    .input-file {
+        display: none !important;
+    }
+
+    .bi-file-earmark-arrow-up {
+        font-size: 10vh;
+        color: #70BADF;
+        display: block;
+        margin-top: 2.5vh;
+        text-align: center;
+    }
+
+    /* Para que el label ocupe el 100% y asi aunque no des encima de la imagen se abra para escoger el archivo. */
+    .label-input {
+        width: 100%;
+        height: 100%;
+    }
+
+    .nombre-archivo {
+        width: 50%;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 2%;
+    }
+
+    .nombre-archivo>label {
+        color: #70BADF;
+        font-weight: normal;
+        font-style: italic;
+        font-size: 2rem;
+    }
+
+    /* Para que aplique los mismos estilos al texto y al icono. */
+    .boton-subir {
+        background-color: #70BADF;
+        width: 30%;
+        margin: auto;
+        text-align: center;
+        font-size: 3rem;
+        height: 5vh;
+        border-radius: 30px;
+        margin-top: 5%;
+    }
+
+    .texto-btn-subir {
+        display: inline-block;
+    }
+
+    .icono-texto-subir {
+        padding-top: 1vh;
+        color: #FFFFFF;
+    }
+
+    .bi-cloud-upload {
+        vertical-align: middle;
+    }
+
+    .navbar-subir {
+        height: 5%;
+        background-color: #736A61;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        border-radius: 20px;
+        position: absolute;
+        bottom: 0;
+        left: 10%;
+        overflow: auto;
     }
 }
 
@@ -258,9 +340,90 @@ body {
         font-size: 30px;
         text-align: right;
     }
+
     .bi-download {
         vertical-align: top;
         font-size: 35px;
+    }
+
+    /* Estilos para la pagina de subir */
+    .subir-archivos {
+        margin: 5%;
+    }
+
+    .borde-subir-archivos {
+        width: 50%;
+        margin: auto;
+        height: 40vh;
+        border-radius: 20px;
+        border: 2px solid #70BADF;
+        border-style: dashed;
+    }
+
+    .input-file {
+        display: none !important;
+    }
+
+    .bi-file-earmark-arrow-up {
+        font-size: 20vh;
+        color: #70BADF;
+        display: block;
+        margin-top: 5vh;
+        text-align: center;
+    }
+
+    /* Para que el label ocupe el 100% y asi aunque no des encima de la imagen se abra para escoger el archivo. */
+    .label-input {
+        width: 100%;
+        height: 100%;
+    }
+
+    .nombre-archivo {
+        width: 50%;
+        margin: auto;
+        margin-top: 2%;
+        margin-bottom: 2%;
+    }
+
+    .nombre-archivo>label {
+        color: #70BADF;
+        font-weight: normal;
+        font-style: italic;
+        font-size: 2rem;
+    }
+
+    /* Para que aplique los mismos estilos al texto y al icono. */
+    .boton-subir {
+        background-color: #70BADF;
+        width: 20%;
+        margin: auto;
+        text-align: center;
+        font-size: 3rem;
+        height: 6vh;
+        border-radius: 30px;
+        margin-top: 2%;
+    }
+
+    .texto-btn-subir {
+        display: inline-block;
+    }
+
+    .icono-texto-subir {
+        padding-top: 1vh;
+        color: #FFFFFF;
+    }
+
+    .bi-cloud-upload {
+        vertical-align: middle;
+    }
+
+    .navbar-subir {
+        height: 20%;
+        background-color: #736A61;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+        border-radius: 20px;
     }
 }
 
@@ -328,4 +491,7 @@ input[type="search"]::placeholder {
     font-size: 333%;
     margin-right: 5%;
     color: #FFFFFF;
+}
+a:link, a:visited, a:active {
+    text-decoration:none;
 }

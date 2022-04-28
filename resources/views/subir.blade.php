@@ -25,71 +25,33 @@
         <div class="logo-archivos text-center">
             <img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision">
         </div>
-        <div class="buscador">
-            <input type="search" id="buscador" class="form-control" placeholder="Buscar aquí..." aria-label="Search" />
-        </div>
-        <div class="fondo-marron">
-            <div class="titulo">
-                <h2 class="resultados">Resultados:</h2>
+        <form method="POST" class="formulario-subir">
+            <div class="borde-subir-archivos">
+                <label for="file-input" class="label-input">
+                    <i class="bi bi-file-earmark-arrow-up"></i>
+                </label>
+                <input type="file" class="input-file" id="file-input">
             </div>
-            <div class="resultados-busqueda">
-                <div class="col-5 columna1">
-                    <div class="resultado">
-                        <div class="imagen-resultado">
-                            <img src="{{ URL::asset('images/foto_camara.jpg') }}" class="resultado-imagen">
-                        </div>
-                        <div class="text-center nombre-descargar">
-                            <div class="nombre-movimiento">
-                                <p class="nombreArchivo">Foto camara</p>
-                            </div>
-                            <i class="bi bi-download"></i>
-                        </div>
-                    </div>
-                    <div class="resultado">
-                        <div class="imagen-resultado">
-                            <img src="{{ URL::asset('images/foto_camara.jpg') }}" class="resultado-imagen">
-                        </div>
-                        <div class="nombre-descargar">
-                            <div class="nombre-movimiento">
-                                <p class="nombreArchivo">Foto camara</p>
-                            </div>
-                            <i class="bi bi-download"></i>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-5 columna2">
-                    <div class="resultado">
-                        <div class="imagen-resultado">
-                            <img src="{{ URL::asset('images/foto_camara.jpg') }}" class="resultado-imagen">
-                        </div>
-                        <div class="nombre-descargar">
-                            <div class="nombre-movimiento">
-                                <p class="text-center nombreArchivo">I_511454546Interr_Plata_Circular_02_</p>
-                            </div>
-                            <i class="bi bi-download"></i>
-                        </div>
-                    </div>
-                    <div class="resultado">
-                        <div class="imagen-resultado">
-                            <img src="{{ URL::asset('images/foto_camara.jpg') }}" class="resultado-imagen">
-                        </div>
-                        <div class="nombre-descargar">
-                            <div class="nombre-movimiento">
-                                <p class="text-center nombreArchivo">I_511454546Interr_Plata_Circular_02_</p>
-                            </div>
-                            <i class="bi bi-download"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="nombre-archivo">
+                <label for="nombre-archivo">Nombre</label>
+                <input type="text" name="nombre-archivo" class="form-control" id="nombre-archivo" aria-describedby="Nombre del archivo">
             </div>
-        </div>
-        <div class="navbar">
+            <div class="boton-subir">
+                <a href="">
+                    <div class="icono-texto-subir">
+                        <i class="bi bi-cloud-upload"></i>
+                        <p class="texto-btn-subir">Subir</p>
+                    </div>
+                </a>
+            </div>
+        </form>
+        <div class="navbar-subir">
             <div class="text-center botones">
                 <div class="primero">
-                    <a href="./subir='yes'" class="subir"><i class="bi bi-cloud-arrow-up"></i></a>
+                    <a href="{{ url('/subir') }}" class="subir"><i class="bi bi-cloud-arrow-up"></i></a>
                 </div>
                 <div class="segundo">
-                    <a href="." class="actual"><i class="bi bi-cloud-arrow-down-fill"></i></a>
+                    <a href="{{ url('/archivos') }}" class="actual"><i class="bi bi-cloud-arrow-down-fill"></i></a>
                 </div>
                 <div class="tercero">
                     <a href="{{ route('cerrarSesion.cerrarSesion') }}" class="cerrar-sesion"><i class="bi bi-x"></i></a>
