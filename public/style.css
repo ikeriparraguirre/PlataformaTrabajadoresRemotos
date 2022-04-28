@@ -40,8 +40,9 @@ body {
         display: none;
     }
 
+    /* Estilos para la pagina de archivos */
     .logo-tasiva-archivos {
-        width: 25%;
+        width: 30%;
         margin: 5%;
     }
 
@@ -51,48 +52,60 @@ body {
         padding: 20px;
         background-color: #4B453E;
         border-radius: 15px;
-        height: 80vh;
-    }
-
-    .resultados {
-        color: #BFBBBB;
-
+        height: 55vh;
+        overflow: auto;
     }
 
     .resultados>* {
         margin: 5%;
     }
 
-    .columna1,
-    .columna2 {
-        width: 45%;
-        margin: 1%;
-        background-color: aqua;
-        display: inline-block;
-    }
-
-    .resultado-imagen {
-        max-width: 100%;
-    }
-
-    .nombre-movimiento {
-        display: inline-block;
-        width: 80%;
-        overflow: hidden;
-    }
-
-    .bi-download {
-        vertical-align: top;
-    }
-
     /* Para que los nombres aparezcan solo en una linea. */
     .nombreArchivo {
         animation: 8s linear 0s infinite alternate mover;
         text-overflow: ellipsis;
-        width: 150%;
+        width: 200%;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
+    }
+
+    #buscador {
+        background-color: #736A61;
+        width: 80%;
+        height: 4vh;
+        margin: auto;
+        margin-bottom: 5%;
+        color: #FFFFFF;
+        border: 0px solid black;
+        border-radius: 20px;
+        font-size: 25px;
+        padding-left: 5%;
+    }
+
+    .resultados-busqueda {
+        margin-top: 2%;
+    }
+
+    .navbar {
+        height: 20%;
+        background-color: #736A61;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        border-radius: 20px;
+    }
+
+    /* Estilos que se aplican al nombre de la imagen y al boton de descargar */
+    .nombre-descargar {
+        color: #FFFFFF;
+        margin: 2%;
+        font-size: 20px;
+        text-align: right;
+    }
+    .bi-download {
+        vertical-align: top;
     }
 }
 
@@ -179,6 +192,76 @@ body {
         margin: auto;
         margin-bottom: 2%;
     }
+
+    /* Estilos para la pagina de Archivos */
+    .logo-archivos {
+        display: none;
+    }
+
+    .archivos {
+        margin-top: 2%;
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+
+    #buscador {
+        background-color: #736A61;
+        width: 50%;
+        height: 6vh;
+        margin: auto;
+        margin-top: 2%;
+        margin-bottom: 2%;
+        color: #FFFFFF;
+        border: 0px solid black;
+        border-radius: 20px;
+        font-size: 30px;
+        padding-left: 5%;
+    }
+
+    .fondo-marron {
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+        background-color: #4B453E;
+        border-radius: 15px;
+        height: 70vh;
+        overflow: auto;
+    }
+
+    /* Para que los nombres aparezcan solo en una linea. */
+    .nombreArchivo {
+        animation: 7s linear 0s infinite alternate mover;
+        text-overflow: ellipsis;
+        width: 180%;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .resultados-busqueda {
+        margin-top: 1%;
+    }
+
+    .navbar {
+        height: 20%;
+        background-color: #736A61;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+        border-radius: 20px;
+    }
+
+    /* Estilos que se aplican al nombre de la imagen y al boton de descargar */
+    .nombre-descargar {
+        color: #FFFFFF;
+        margin: 2%;
+        font-size: 30px;
+        text-align: right;
+    }
+    .bi-download {
+        vertical-align: top;
+        font-size: 35px;
+    }
 }
 
 .form-group>label,
@@ -192,12 +275,57 @@ body {
     text-decoration: underline;
 }
 
-#buscador {
-    background-color: #736A61;
-    width: 80%;
-    margin: auto;
-    margin-bottom: 5%;
+input[type="search"]::placeholder {
     color: #FFFFFF;
-    border: 0px solid black;
-    border-radius: 10px;
+    letter-spacing: 1px;
+}
+
+.resultados {
+    color: #BFBBBB;
+    margin: 0;
+}
+
+.columna1,
+.columna2 {
+    width: 45%;
+    margin: 1%;
+    display: inline-block;
+}
+
+.resultado-imagen {
+    max-width: 100%;
+    border-radius: 20px;
+}
+
+.nombre-movimiento {
+    display: inline-block;
+    width: 80%;
+    overflow: hidden;
+}
+
+.primero,
+.segundo,
+.tercero {
+    width: 32%;
+    display: inline-block;
+    margin: auto;
+}
+
+.bi-cloud-arrow-up {
+    font-size: 333%;
+    margin-right: 5%;
+    color: #FFFFFF;
+    margin: auto;
+}
+
+.bi-cloud-arrow-down-fill {
+    font-size: 333%;
+    margin-right: 5%;
+    color: #70BADF;
+}
+
+.bi-x {
+    font-size: 333%;
+    margin-right: 5%;
+    color: #FFFFFF;
 }

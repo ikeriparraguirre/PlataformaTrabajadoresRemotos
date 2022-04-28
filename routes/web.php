@@ -31,6 +31,14 @@ Route::get('/archivos', function(){
 Route::get('/registro', function(){
     return view('registro');
 })->middleware('guest');
+Route::get('/subir', function(){
+    return view('/subir');
+})->middleware('auth');
+
+/* Para que al clickar sobre el link de cambiar pagina redireccione a la pagina de subir. */
+Route::get("/subir='yes'", function(){
+    return redirect()->to("/subir");
+});
 
 Route::post('/', [UsuarioController::class, 'crearSesion'])->name('crearSesion');
 Route::post('/registro', [UsuarioController::class, 'registrarUsuario'])->name('registro.registrarUsuario');
