@@ -49,8 +49,8 @@
                 @if(session()->has('message'))
                 <div class="alert alert-success correcto" role="alert">{{ session()->get('message') }}</div>
                 @endif
-                @if($errors->any())
-                <div class="alert alert-danger error" role="alert">{{ $errors->first() }}</div>
+                @if(session()->has('errorSubida'))
+                <div class="alert alert-danger error" role="alert">{{ session()->get('errorSubida') }}</div>
                 @endif
             </div>
         </form>

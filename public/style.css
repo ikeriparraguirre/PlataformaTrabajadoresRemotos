@@ -64,7 +64,7 @@ body {
     .nombreArchivo {
         animation: 8s linear 0s infinite alternate mover;
         text-overflow: ellipsis;
-        width: 200%;
+        width: 500%;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
@@ -85,6 +85,7 @@ body {
 
     .resultados-busqueda {
         margin-top: 2%;
+        text-align: center;
     }
 
     .navbar {
@@ -190,6 +191,11 @@ body {
         bottom: 0;
         left: 10%;
         overflow: auto;
+    }
+    .bi-file-code::before {
+        font-size: 100%;
+        margin-top: 2%;
+        vertical-align: -webkit-baseline-middle;
     }
 }
 
@@ -324,6 +330,7 @@ body {
 
     .resultados-busqueda {
         margin-top: 1%;
+        text-align: center;
     }
 
     .navbar {
@@ -432,6 +439,22 @@ body {
         margin-bottom: 2%;
         border-radius: 20px;
     }
+    .bi-file-code::before {
+        font-size: 200%;
+        margin-top: 2%;
+    }
+}
+
+.resultado {
+    width: 40%;
+    height: 30vh;
+    display: inline-block;
+    margin: 2%;
+}
+.imagen-resultado {
+    font-size: 1000%;
+    height: 30vh;
+    overflow: hidden;
 }
 
 .form-group>label,
@@ -463,8 +486,9 @@ input[type="search"]::placeholder {
 }
 
 .resultado-imagen {
-    max-width: 100%;
+    width: 100%;
     border-radius: 20px;
+    height: 100%;
 }
 
 .nombre-movimiento {
@@ -506,7 +530,8 @@ input[type="search"]::placeholder {
     font-size: 333%;
     margin-right: 5%;
 }
-#nombre-archivo{
+
+#nombre-archivo {
     border-radius: 30px;
 }
 
@@ -515,14 +540,16 @@ input[type="search"]::placeholder {
 .boton-subir>a:active {
     text-decoration: none;
 }
-.estado-archivo{
+
+.estado-archivo {
     width: 30%;
     margin: auto;
     text-align: center;
     margin-top: 2%;
     font-size: 2rem;
 }
-.subir{
+
+.subir {
     background-color: transparent;
     width: 100%;
     border: 0;

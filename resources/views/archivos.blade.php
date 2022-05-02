@@ -27,15 +27,38 @@
         <div class="buscador">
             <form method="POST">
                 @csrf
-                <input type="search" id="buscador" class="form-control" placeholder="Buscar aquí..." aria-label="Search" />
+                <input type="search" id="buscador" name="busqueda" class="form-control" placeholder="Buscar aquí..." aria-label="Search" />
             </form>
         </div>
         <div class="fondo-marron">
             <div class="titulo">
-                <h2 class="resultados">Resultados:</h2>
+                <h1 class="resultados">Resultados:</h1>
             </div>
             <div class="resultados-busqueda">
-                <div class="col-5 columna1">
+                @if(session()->has('arrayResultados'))
+                @for($i = 0; $i< count(session()->get('arrayResultados')); $i++)
+                    <div class="resultado">
+                        <div class="imagen-resultado">
+                            @if(session()->get('arrayResultados')[$i]['tipo'] == 'data:image')
+                            <img src="{{ session()->get('arrayResultados')[$i]['archivo'] }}" class="resultado-imagen">
+                            @else
+                            <i class="bi bi-file-code"></i>
+                            @endif
+                        </div>
+                        <div class="text-center nombre-descargar">
+                            <div class="nombre-movimiento">
+                                <p class="nombreArchivo">{{ session()->get('arrayResultados')[$i]['nombre'] }}</p>
+                            </div>
+                            <a href="{{ session()->get('arrayResultados')[$i]['archivo'] }}" download="{{ session()->get('arrayResultados')[$i]['nombre'] }}"><i class="bi bi-download"></i></a>
+                        </div>
+                    </div>
+
+                    @endfor
+                    @endif
+                    @if(session()->has('errorSinArchivos'))
+                    <h3>{{ session()->get('errorSinArchivos') }}</h3>
+                    @endif
+                    <!-- <div class="col-5 columna1">
                     <div class="resultado">
                         <div class="imagen-resultado">
                             <img src="{{ URL::asset('images/foto_camara.jpg') }}" class="resultado-imagen">
@@ -82,7 +105,7 @@
                             <i class="bi bi-download"></i>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="navbar">
