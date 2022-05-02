@@ -421,11 +421,15 @@ body {
     }
 
     .navbar-subir {
-        height: 20%;
+        position: absolute;
+        left: 10%;
+        height: 6%;
+        bottom: 0;
         background-color: #736A61;
         width: 80%;
         margin: auto;
         margin-top: 5%;
+        margin-bottom: 2%;
         border-radius: 20px;
     }
 }
@@ -510,4 +514,16 @@ input[type="search"]::placeholder {
 .boton-subir>a:visited,
 .boton-subir>a:active {
     text-decoration: none;
+}
+.estado-archivo{
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    margin-top: 2%;
+    font-size: 2rem;
+}
+.subir{
+    background-color: transparent;
+    width: 100%;
+    border: 0;
 }

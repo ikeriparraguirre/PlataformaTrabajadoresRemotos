@@ -12,12 +12,12 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="public/style.css">
     <!-- Para que cree y encuentre la ruta del style.css -->
     <link rel="stylesheet" href="{{ URL::asset('style.css') }}">
     <link rel="icon" href="{{ URL::asset('images/logo_tasiva.png') }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -25,24 +25,33 @@
         <div class="logo-archivos text-center">
             <img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision">
         </div>
-        <form method="POST" class="formulario-subir">
-            <div class="borde-subir-archivos">
+        <form method="POST" class="formulario-subir" enctype="multipart/form-data">
+            @csrf
+            <div class="borde-subir-archivos" draggable="true">
                 <label for="file-input" class="label-input">
                     <i class="bi bi-file-earmark-arrow-up"></i>
                 </label>
-                <input type="file" class="input-file" id="file-input">
+                <input type="file" name="archivo" class="input-file" id="file-input">
             </div>
             <div class="nombre-archivo">
                 <label for="nombre-archivo">Nombre</label>
                 <input type="text" name="nombre-archivo" class="form-control" id="nombre-archivo" aria-describedby="Nombre del archivo">
             </div>
             <div class="boton-subir">
-                <a href="">
+                <button type="submit" class="subir">
                     <div class="icono-texto-subir">
                         <i class="bi bi-cloud-upload"></i>
                         <p class="texto-btn-subir">Subir</p>
                     </div>
-                </a>
+                </button>
+            </div>
+            <div class="estado-archivo">
+                @if(session()->has('message'))
+                <div class="alert alert-success correcto" role="alert">{{ session()->get('message') }}</div>
+                @endif
+                @if($errors->any())
+                <div class="alert alert-danger error" role="alert">{{ $errors->first() }}</div>
+                @endif
             </div>
         </form>
         <div class="navbar-subir">
@@ -71,5 +80,6 @@
     </div>-->
         <!-- <a href="{{ route('cerrarSesion.cerrarSesion') }}">Cerrar sesion</a> -->
 </body>
+<script src="{{ URL::asset('script.js') }}"></script>
 
 </html>

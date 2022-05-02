@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\ArchivosController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +35,9 @@ Route::get('/registro', function(){
 Route::get('/subir', function(){
     return view('subir');
 })->middleware('auth');
+Route::get('/cerrarSesion', [UsuarioController::class, 'cerrarSesion'])->name('cerrarSesion.cerrarSesion')->middleware('auth');
 
 Route::post('/', [UsuarioController::class, 'crearSesion'])->name('crearSesion');
 Route::post('/registro', [UsuarioController::class, 'registrarUsuario'])->name('registro.registrarUsuario');
-Route::get('/cerrarSesion', [UsuarioController::class, 'cerrarSesion'])->name('cerrarSesion.cerrarSesion');
+Route::post('/subir',[ArchivosController::class ,'subirArchivo']);
+Route::post('/archivos', [ArchivosController::class, 'leerArchivos']);
