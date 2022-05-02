@@ -25,7 +25,7 @@ class ArchivosController extends Controller
         $nombreArchivo = $_POST['nombre-archivo'];
         $existeArchivo = count(DB::table('files')->where('nombre', 'like', "$nombreArchivo")->get());
         //Para que si no se ha subido ningun archivo no de un ValueError, si da un valueError redirecciona de nuevo a la pagina con el mensaje de error.
-        if ($nombreArchivo != "" || is_null($nombreArchivo)) {
+        if (trim($nombreArchivo) != "" || is_null($nombreArchivo)) {
             if ($existeArchivo == 0) {
                 try {
                     $convert_to_base64 = base64_encode(file_get_contents($file['tmp_name']));
@@ -40,15 +40,15 @@ class ArchivosController extends Controller
                     //Para sacar la hora actual
                     date_default_timezone_set('Europe/Madrid');
                     $date = date('Y-m-d H:i:s');
-                    /*try {
-                    //Para subir a la base de datos.
-                    DB::insert("INSERT INTO files VALUES('0', '$nombreArchivo', '$base64_image', '$date')");
-                    //PARA HACER SI HAY ALGUN ERROR.
-                    //redirect()->to('/subir')->with('errorSubida', "Error al subir un archivo al servidor.");
-                    return redirect()->to('/subir')->with('message', "Archivo subido al servidor correctamente.");
-                } catch (\Throwable $th) {
-                    return redirect()->to('/subir')->with('errorSubida', "Error al subir el archivo. Archivo no valido.");
-                }*/
+                    try {
+                        //Para subir a la base de datos.
+                        DB::insert("INSERT INTO files VALUES('0', '$nombreArchivo', '$base64_image', '$date')");
+                        //PARA HACER SI HAY ALGUN ERROR.
+                        //redirect()->to('/subir')->with('errorSubida', "Error al subir un archivo al servidor.");
+                        return redirect()->to('/subir')->with('message', "Archivo subido al servidor correctamente.");
+                    } catch (\Throwable $th) {
+                        return redirect()->to('/subir')->with('errorSubida', "Error al subir el archivo. Archivo no valido.");
+                    }
                 } catch (ValueError $ve) {
                     return redirect()->to('/subir')->with('errorSubida', "Error al subir el archivo al servidor.");
                 }
@@ -58,9 +58,6 @@ class ArchivosController extends Controller
         } else {
             return redirect()->to('/subir')->with('errorSubida', "Nombre del archivo no valido.");
         }
-
-
-        //return "<img src=" . $base64_image . "></img>";
     }
 
     public function leerArchivos()

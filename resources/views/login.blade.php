@@ -23,13 +23,13 @@
 <body>
     <div class="col-sm-6 formulario">
         <div class="logo text-center">
-            <img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva" alt="logotipo de la empresa Tasiva Vision">
+            <a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva" alt="logotipo de la empresa Tasiva Vision"></a>
         </div>
         <div class="iniciar-sesion">
             <form method="POST" class="formulario-inicio-sesion">
                 @csrf
                 <div class="form-group">
-                    <label for="correo-electronico">Correo electronico</label>
+                    <label for="correo-electronico">Correo electrónico</label>
                     <input type="email" name="email" class="form-control" id="correo-electronico" aria-describedby="Correo electronico">
                 </div>
                 <div class="form-group">
@@ -37,7 +37,7 @@
                     <input type="password" name="password" class="form-control" id="contraseña">
                 </div>
                 @error('message')
-                <div class="alert alert-danger m-2 mensaje-error" role="alert">Correo electronico o contraseña incorrecta.</div>
+                <div class="alert alert-danger m-2 mensaje-error" role="alert">Correo electrónico o contraseña incorrecta.</div>
                 @enderror
                 <div class="form-group text-center registrarse">
                     <a href="registro" class="link-primary btn-registrarse">Registrarse</a>

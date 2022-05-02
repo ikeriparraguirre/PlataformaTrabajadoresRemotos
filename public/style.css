@@ -1,5 +1,5 @@
 body {
-    background-color: #2a2a2a;
+    background-color: #363535;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -88,16 +88,6 @@ body {
         text-align: center;
     }
 
-    .navbar {
-        height: 20%;
-        background-color: #736A61;
-        width: 80%;
-        margin: auto;
-        margin-top: 5%;
-        margin-bottom: 5%;
-        border-radius: 20px;
-    }
-
     /* Estilos que se aplican al nombre de la imagen y al boton de descargar */
     .nombre-descargar {
         color: #FFFFFF;
@@ -179,7 +169,7 @@ body {
         vertical-align: middle;
     }
 
-    .navbar-subir {
+    .navbar-subir, .navbar {
         height: 6%;
         background-color: #736A61;
         width: 80%;
@@ -223,10 +213,6 @@ body {
 
     .logo-tasiva {
         width: 25%;
-    }
-
-    .imagen {
-        width: 100%;
     }
 
     .foto-camara {
@@ -312,7 +298,7 @@ body {
         width: 80%;
         margin: auto;
         padding: 20px;
-        background-color: #4B453E;
+        background-color: #736A61;
         border-radius: 15px;
         height: 70vh;
         overflow: auto;
@@ -474,7 +460,7 @@ input[type="search"]::placeholder {
 }
 
 .resultados {
-    color: #BFBBBB;
+    color: #FFFFFF;
     margin: 0;
 }
 

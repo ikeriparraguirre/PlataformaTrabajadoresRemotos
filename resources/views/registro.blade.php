@@ -23,7 +23,7 @@
 <body>
     <div class="col-sm-6 formulario">
         <div class="logo text-center">
-            <img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva" alt="logotipo de la empresa Tasiva Vision">
+            <a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva" alt="logotipo de la empresa Tasiva Vision"></a>
         </div>
         <div class="registro">
             <form method="POST" class="formulario-registro">
@@ -36,7 +36,7 @@
                 <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
                 <div class="form-group">
-                    <label for="correo-electronico">Correo electronico</label>
+                    <label for="correo-electronico">Correo electrónico</label>
                     <input type="email" name="email" class="form-control" id="correo-electronico" aria-describedby="Correo electronico">
                 </div>
                 @error('email')
@@ -51,7 +51,7 @@
                 @enderror
                 <div class="form-group">
                     <label for="confirmar-contraseña">Confirmar Contraseña</label>
-                    <input type="password" name="confirmar-password" class="form-control" id="confirmar-contraseña">
+                    <input type="password" name="password_confirmation" class="form-control" id="confirmar-contraseña">
                 </div>
                 @error('confirmar-password')
                 <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
