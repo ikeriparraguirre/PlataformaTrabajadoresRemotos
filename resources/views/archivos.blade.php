@@ -52,6 +52,7 @@
                                 {{-- Se indica el nombre del archivo. --}}
                                 <p class="nombreArchivo">{{ session()->get('arrayResultados')[$i]['nombre'] }}</p>
                             </div>
+                            {{-- Se indica al enlace del icono de descarga un href el data del archivo y en el download el nombre del archivo que sera el nombre con que se descargue el archivo. --}}
                             <a href="{{ session()->get('arrayResultados')[$i]['archivo'] }}" download="{{ session()->get('arrayResultados')[$i]['nombre'] }}"><i class="bi bi-download"></i></a>
                         </div>
                     </div>
