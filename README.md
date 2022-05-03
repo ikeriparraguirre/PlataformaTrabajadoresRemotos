@@ -3,13 +3,11 @@ Una aplicacion web que permite a los trabajadores poder subir y descargar archiv
 Proyecto de fin de grado de Iker Iparraguirre. <br>
 ## Instalación 🔧
 ```
-Instalar [Composer](https://getcomposer.org/)
+Instalar <a href='https://getcomposer.org/'>Composer</a>
 ```
-Instalar Laravel con Composer.
 ```
 composer create-project --prefer-dist laravel/laravel laravel
 ```
-Modificar .env.example a .env
 ```
 copy .env.example .env o cp .env.example .env
 ```
