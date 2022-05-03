@@ -169,7 +169,17 @@ body {
         vertical-align: middle;
     }
 
-    .navbar-subir, .navbar {
+    .navbar{
+        height: 6%;
+        background-color: #736A61;
+        width: 80%;
+        margin: auto;
+        margin-top: 5%;
+        margin-bottom: 5%;
+        border-radius: 20px;
+        overflow: auto;
+    }
+    .navbar-subir {
         height: 6%;
         background-color: #736A61;
         width: 80%;
@@ -324,7 +334,7 @@ body {
         background-color: #736A61;
         width: 80%;
         margin: auto;
-        margin-top: 5%;
+        margin-top: 4%;
         border-radius: 20px;
     }
 
@@ -416,7 +426,7 @@ body {
     .navbar-subir {
         position: absolute;
         left: 10%;
-        height: 6%;
+        height: 6.5%;
         bottom: 0;
         background-color: #736A61;
         width: 80%;
