@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Subir archivos</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet" type="text/css">
@@ -45,9 +44,11 @@
                 </button>
             </div>
             <div class="estado-archivo">
+                {{-- Se comprueba si hay algun mensaje correcto y si es asi se muestra el mensaje. --}}
                 @if(session()->has('message'))
                 <div class="alert alert-success correcto" role="alert">{{ session()->get('message') }}</div>
                 @endif
+                {{-- Se comprueba si hay algun mensaje de error y si es asi se muestra el mensaje. --}}
                 @if(session()->has('errorSubida'))
                 <div class="alert alert-danger error" role="alert">{{ session()->get('errorSubida') }}</div>
                 @endif

@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Iniciar sesion</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet" type="text/css">
@@ -35,6 +34,7 @@
                     <label for="contraseña">Contraseña</label>
                     <input type="password" name="password" class="form-control" id="contraseña">
                 </div>
+                {{-- Se comprueba si hay un mensaje incorrecto y si es asi se muestra el mensaje. --}}
                 @error('message')
                 <div class="alert alert-danger m-2 mensaje-error" role="alert">Correo electrónico o contraseña incorrecta.</div>
                 @enderror

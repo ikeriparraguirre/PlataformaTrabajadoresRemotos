@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Registrarse</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet" type="text/css">
@@ -31,6 +30,7 @@
                     <label for="nombre">Nombre</label>
                     <input type="text" name="name" class="form-control" id="nombre" aria-describedby="nombre">
                 </div>
+                {{-- Se comprueba si hay un error y si es asi se muestra. --}}
                 @error('name')
                 <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
@@ -38,6 +38,7 @@
                     <label for="correo-electronico">Correo electrónico</label>
                     <input type="email" name="email" class="form-control" id="correo-electronico" aria-describedby="Correo electronico">
                 </div>
+                {{-- Se comprueba si hay un error y si es asi se muestra. --}}
                 @error('email')
                 <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
@@ -45,6 +46,7 @@
                     <label for="contraseña">Contraseña</label>
                     <input type="password" name="password" class="form-control" id="contraseña">
                 </div>
+                {{-- Se comprueba si hay un error y si es asi se muestra. --}}
                 @error('password')
                 <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
@@ -52,14 +54,14 @@
                     <label for="confirmar-contraseña">Confirmar Contraseña</label>
                     <input type="password" name="password_confirmation" class="form-control" id="confirmar-contraseña">
                 </div>
-                @error('confirmar-password')
+                {{-- Se comprueba si hay un error y si es asi se muestra. --}}
+                @error('password_confirmation')
                 <div class="alert alert-danger mensaje-error" role="alert">{{ $message }}</div>
                 @enderror
                 <div class="col-12 text-center">
                     <button type="submit" class="btn btn-primary btn-registrarse"><i class="bi bi-caret-right"></i></button>
                 </div>
             </form>
-            {{ Auth::user() }}
         </div>
     </div>
     <div class="col-sm-6 imagen">

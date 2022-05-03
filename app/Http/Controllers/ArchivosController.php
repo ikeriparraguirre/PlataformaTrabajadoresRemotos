@@ -12,6 +12,18 @@ use ValueError;
 
 class ArchivosController extends Controller
 {
+
+    /**
+     * 
+     * Funcion para subir un archivo un archivo al servidor.
+     * Este metodo recoge el archivo que ha indicado el usuario, lo codifica en base64
+     * y lo sube al servidor con el nombre indicado en el input.
+     * Si hay algun error se redireccionara a la pagina de subir archivo indicando en un alert el mensaje de error.
+     * Si el archivo se ha subido correctamente se redireccionara a la pagina de subir archivo indicando en un
+     * alert que el archivo se ha subido correctamente.
+     * 
+     */
+
     public function subirArchivo()
     {
         $archivo = $_FILES['archivo'];
@@ -30,7 +42,6 @@ class ArchivosController extends Controller
                     date_default_timezone_set('Europe/Madrid');
                     $date = date('Y-m-d H:i:s');
                     try {
-                        //Para subir a la base de datos.
                         DB::insert("INSERT INTO files VALUES('0', '$nombreArchivo', '$base64_image', '$date')");
                         return redirect()->to('/subir')->with('message', "Archivo subido al servidor correctamente.");
                     } catch (\Throwable $th) {
@@ -47,9 +58,23 @@ class ArchivosController extends Controller
         }
     }
 
+
+    /**
+     * 
+     * Funcion para leer los archivos del servidor.
+     * Indicando el nombre en el input de buscar se comprueba si hay algun archivo en el servidor
+     * que contenga la cadena indicada en el input, si es asi se genera un array por cada archivo indicando
+     * el nombre, archivo y el tipo. Si el tipo es data:image se podra previsualizar la imagen, sino aparecera
+     * un icono de un archivo.
+     * Si no se ha encontrado ningún archivo se redireccionara a la pagina de archivos indicando que no se ha encontrado
+     * ningun archivo.
+     * Si se encuentra algun archivo se redireccionara a la pagina de archivos con el arrayResultados que seran todos los resultados
+     * a mostrar en la pagina.
+     * 
+     */
+
     public function leerArchivos()
     {
-        //Para leer todos los archivos de la base de datos que contengan en el nombre lo que se ha buscado.
         $busqueda = $_POST['busqueda'];
         $resultado = DB::table('files')->where('nombre', 'like', "%$busqueda%")->get();
         $arrayResultados = array();

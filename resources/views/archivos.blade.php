@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Archivos</title>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,700" rel="stylesheet" type="text/css">
@@ -34,26 +33,31 @@
                 <h1 class="resultados">Resultados:</h1>
             </div>
             <div class="resultados-busqueda">
+                {{-- Se comprueba si existe algun resultado. --}}
                 @if(session()->has('arrayResultados'))
+                {{-- Se recorre cada elemento del array. --}}
                 @for($i = 0; $i< count(session()->get('arrayResultados')); $i++)
                     <div class="resultado">
                         <div class="imagen-resultado">
+                            {{-- Si el tipo es 'data:image' se muestra la imagen. --}}
                             @if(session()->get('arrayResultados')[$i]['tipo'] == 'data:image')
                             <img src="{{ session()->get('arrayResultados')[$i]['archivo'] }}" class="resultado-imagen">
                             @else
+                            {{-- Si el tipo no es 'data:image' se muestra un icono de un archivo. --}}
                             <i class="bi bi-file-code"></i>
                             @endif
                         </div>
                         <div class="text-center nombre-descargar">
                             <div class="nombre-movimiento">
+                                {{-- Se indica el nombre del archivo. --}}
                                 <p class="nombreArchivo">{{ session()->get('arrayResultados')[$i]['nombre'] }}</p>
                             </div>
                             <a href="{{ session()->get('arrayResultados')[$i]['archivo'] }}" download="{{ session()->get('arrayResultados')[$i]['nombre'] }}"><i class="bi bi-download"></i></a>
                         </div>
                     </div>
-
                     @endfor
                     @endif
+                    {{-- Si hay algun error se muestra el mensaje de error. --}}
                     @if(session()->has('errorSinArchivos'))
                     <h3>{{ session()->get('errorSinArchivos') }}</h3>
                     @endif
