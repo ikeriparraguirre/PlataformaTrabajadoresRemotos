@@ -14,11 +14,6 @@ class ArchivosController extends Controller
 {
     public function subirArchivo()
     {
-        //$fileLocation = $_FILES['archivo']['tmp_name'];
-        //$filename = $file['name'];
-        //$newFileName = "newFileName.jpg";
-        //Para descargarlo en el ordenador.
-        //move_uploaded_file($fileLocation, "C:/xampp/htdocs" . $newFileName);
         $archivo = $_FILES['archivo'];
         $tipoArchivo = $archivo['type'];
         $file = $_FILES['archivo'];
@@ -31,20 +26,12 @@ class ArchivosController extends Controller
                     $convert_to_base64 = base64_encode(file_get_contents($file['tmp_name']));
                     $base64_image = "data:$tipoArchivo;base64," . $convert_to_base64;
 
-                    //Para convertirlo a blob. No hace falta ya que de por si la base de datos lo guarda en blob. Si hacemos esto se codifica y luego hay que decodificarlos.
-                    /*$fp = fopen($base64_image, "archivo");
-        $contenido = fread($fp, $_FILES["archivo"]["size"]);
-        $contenido = addslashes($contenido);
-        fclose($fp);*/
-
                     //Para sacar la hora actual
                     date_default_timezone_set('Europe/Madrid');
                     $date = date('Y-m-d H:i:s');
                     try {
                         //Para subir a la base de datos.
                         DB::insert("INSERT INTO files VALUES('0', '$nombreArchivo', '$base64_image', '$date')");
-                        //PARA HACER SI HAY ALGUN ERROR.
-                        //redirect()->to('/subir')->with('errorSubida', "Error al subir un archivo al servidor.");
                         return redirect()->to('/subir')->with('message', "Archivo subido al servidor correctamente.");
                     } catch (\Throwable $th) {
                         return redirect()->to('/subir')->with('errorSubida', "Error al subir el archivo. Archivo no valido.");

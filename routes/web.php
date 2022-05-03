@@ -6,24 +6,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ArchivosController;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-/*
-Route::get('/', function () {
-    return view('welcome');
-});*/
 
 /* Especificamos las rutas de nuestro sitio web y despues con el middleware especificamos si pueden acceder los logeados o no logeados. */
-
 Route::get('/', function () {
     return view('login');
 })->middleware('guest');

@@ -12,7 +12,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <!-- Para que cree y encuentre la ruta del style.css -->
     <link rel="stylesheet" href="{{ URL::asset('style.css') }}">
     <link rel="icon" href="{{ URL::asset('images/logo_tasiva.png') }}">
 

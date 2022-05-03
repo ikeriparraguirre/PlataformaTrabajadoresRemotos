@@ -1,34 +1,3 @@
-/*
-document.querySelector(".borde-subir-archivos").addEventListener('dragover', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-});
-
-document.querySelector(".borde-subir-archivos").addEventListener('drop', function (e) {
-    e.preventDefault();
-    e.stopPropagation();
-    for (var i = 0; i < e.dataTransfer.items.length; i++) {
-        var entry = e.dataTransfer.items[i].webkitGetAsEntry();
-        if (entry.isFile) {
-            //Cargar la imagen.
-            console.log(entry);
-            console.log("es un archivo.")
-        } else if (entry.isDirectory) {
-            //Mostrar un error
-            console.log(entry);
-            console.log("es una carpeta.");
-        }
-    }
-
-    //Para eliminar los archivos.
-    if (e.dataTransfer.items) {
-        e.dataTransfer.items.clear();
-    } else {
-        e.dataTransfer.clearData();
-    }
-});
-*/
-
 document.querySelector("#file-input").addEventListener('change', function () {
     //Para colocar el nombre del archivo en el input de subir el archivo.
     let input = document.querySelector("#file-input");
