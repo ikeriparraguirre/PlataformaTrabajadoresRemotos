@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        //Para crear la tabla files que sera donde se almacenen todas las imagenes.
-        Schema::create('files', function (Blueprint $table){
+        Schema::create('calendario', function (Blueprint $table){
             $table->increments('id')->index();
-            $table->string('nombre');
-            //Usamos binary a la hora de hacer la migracion porque es de tipo blob solo que lleva otro nombre.
-            $table->binary('archivo');
+            $table->integer('idusuario');
+            $table->string('actividad');
+            $table->longText('descripcion');
             $table->date('fecha');
         });
     }
@@ -30,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::drop('files');
+        Schema::drop('calendario');
     }
 };
