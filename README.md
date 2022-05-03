@@ -50,4 +50,4 @@ Los errores mas comúnes son los siguientes.
 | <p align='center'>No se ha encontrado ningun archivo.</p> | <p align='center'>No es un error como tal pero indica que no se ha encontrado ningún archivo.</p> |
 | <p align='center'>Nombre del archivo no valido.</p> | <p align='center'>Indica que el nombre del archivo no es valido, normalmente este error suele aparecer cuando el campo del nombre esta vacia.</p> |
 | <p align='center'>Error al subir el archivo. Archivo no valido.</p> | <p align='center'>Indica que el archivo no es valido, es decir, que no se puede subir al servidor, este error aparece por ejemplo si se intenta subir un archivo .exe</p> |
-
+| <p align='center'>Ya existe un archivo con este nombre en el servidor.</p> | <p align='center'>Indica que ya hay un archivo con el mismo nombre en el servidor, para evitar este error se cambia el nombre y ya.</p> |
