@@ -1,6 +1,7 @@
 # Plataforma para Trabajadores Remotos
 Una aplicacion web que permite a los trabajadores poder subir y descargar archivos remotamente. <br>
 Proyecto de fin de grado de Iker Iparraguirre. <br>
+![](/public/images/portada_readme.PNG)
 ## Instalación 🔧
 ```
 Instalar Composer
