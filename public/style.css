@@ -699,3 +699,10 @@ input[type="search"]::placeholder {
 .bi-plus-circle::before {
     transform: scale(1.5);
 }
+.eliminado{
+    margin: 1% auto;
+    width: 30%;
+    font-size: 1.2rem;
+    text-align: center;
+    display: none;
+}

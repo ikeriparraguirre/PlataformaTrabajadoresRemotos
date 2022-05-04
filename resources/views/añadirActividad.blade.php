@@ -46,6 +46,10 @@
         @if(session()->has('error-fecha'))
         <div class="alert alert-danger mensaje-actividad" role="alert">{{ session()->get('error-fecha') }}</div>
         @endif
+        {{-- Se comprueba si hay algun mensaje de error y si es asi se muestra el mensaje. --}}
+        @if(session()->has('error-añadir'))
+        <div class="alert alert-danger mensaje-actividad" role="alert">{{ session()->get('error-añadir') }}</div>
+        @endif
     </div>
     <div class="navbar-calendario">
         <div class="text-center botones">

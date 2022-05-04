@@ -38,5 +38,5 @@ Route::post('/', [UsuarioController::class, 'crearSesion'])->name('crearSesion')
 Route::post('/registro', [UsuarioController::class, 'registrarUsuario'])->name('registro.registrarUsuario');
 Route::post('/subir', [ArchivosController::class, 'subirArchivo']);
 Route::post('/archivos', [ArchivosController::class, 'leerArchivos']);
-Route::post('/calendario', [CalendarioController::class, 'verActividades']);
+Route::post('/calendario', [CalendarioController::class, 'index']);
 Route::post('/añadirActividad', [CalendarioController::class, 'añadirActividad']);

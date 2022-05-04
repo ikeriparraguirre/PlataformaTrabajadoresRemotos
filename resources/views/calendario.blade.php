@@ -114,6 +114,9 @@
 
 		</div>
 	</div>
+	<div class="eliminado-correctamente">
+		<div class="alert alert-success eliminado" role="alert"></div>
+	</div>
 	<div class="insertar-actividad">
 		<div class="enviar-actividad">
 			<a href="{{ url('/añadirActividad') }}"><button type="submit" name="añadir-actividad" class="btn btn-primary btn-pagina-añadir-actividad"><i class="bi bi-plus-circle mr-2"></i>Añadir Actividad</button></a>
@@ -169,7 +172,7 @@
 
 		//Hace una peticion post que luego se capturara en CalendarioController.
 		function hacerConsulta() {
-			let url = '{{ url("/calendario") }}'
+			let url = '{{ url("/calendario") }}';
 			$.ajax({
 				headers: {
 					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -237,13 +240,32 @@
 						let div = document.createElement("div");
 						div.classList.add("collapse");
 						div.setAttribute("id", "collapse" + res[i].id);
-						let otroDiv = document.createElement("div");
-						otroDiv.classList.add("card", "card-body");
-						let textoDiv = document.createTextNode(res[i].descripcion);
-						otroDiv.appendChild(textoDiv);
-						div.appendChild(otroDiv);
+						let card = document.createElement("div");
+						card.classList.add("card", "card-body");
+						let cardTitle = document.createElement("h3");
+						cardTitle.classList.add("card-title");
+						let tituloCard = document.createTextNode(res[i].actividad);
+						cardTitle.appendChild(tituloCard);
+						card.appendChild(cardTitle);
+						let cardText = document.createElement("p");
+						let textoCard = document.createTextNode(res[i].descripcion);
+						cardText.appendChild(textoCard);
+						card.appendChild(cardText);
+						let botonEliminar = document.createElement("button");
+						botonEliminar.setAttribute("type", "button");
+						botonEliminar.classList.add("btn", "btn-danger");
+						botonEliminar.setAttribute("name", res[i].id);
+						let textoBoton = document.createTextNode("Eliminar");
+						botonEliminar.appendChild(textoBoton);
+						card.appendChild(botonEliminar);
+						div.appendChild(card);
 						resultadosHoy.appendChild(boton);
 						resultadosHoy.appendChild(div);
+						/* Se añade al evento de click al boton de eliminar para
+						que si se clicka llame a eliminarActividad y borre la actividad. */
+						botonEliminar.addEventListener('click', function() {
+							eliminarActividad(res[i].id);
+						});
 					}
 					//Si la actividad es del dia seleccionado.
 					else if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + seleccionado) {
@@ -259,13 +281,32 @@
 						let div = document.createElement("div");
 						div.classList.add("collapse");
 						div.setAttribute("id", "collapse" + res[i].id);
-						let otroDiv = document.createElement("div");
-						otroDiv.classList.add("card", "card-body");
-						let textoDiv = document.createTextNode(res[i].descripcion);
-						otroDiv.appendChild(textoDiv);
-						div.appendChild(otroDiv);
+						let card = document.createElement("div");
+						card.classList.add("card", "card-body");
+						let cardTitle = document.createElement("h3");
+						cardTitle.classList.add("card-title");
+						let tituloCard = document.createTextNode(res[i].actividad);
+						cardTitle.appendChild(tituloCard);
+						card.appendChild(cardTitle);
+						let cardText = document.createElement("p");
+						let textoCard = document.createTextNode(res[i].descripcion);
+						cardText.appendChild(textoCard);
+						card.appendChild(cardText);
+						let botonEliminar = document.createElement("button");
+						botonEliminar.setAttribute("type", "button");
+						botonEliminar.classList.add("btn", "btn-danger");
+						botonEliminar.setAttribute("name", res[i].id);
+						let textoBoton = document.createTextNode("Eliminar");
+						botonEliminar.appendChild(textoBoton);
+						card.appendChild(botonEliminar);
+						div.appendChild(card);
 						resultadosOtros.appendChild(boton);
 						resultadosOtros.appendChild(div);
+						/* Se añade al evento de click al boton de eliminar para
+						que si se clicka llame a eliminarActividad y borre la actividad. */
+						botonEliminar.addEventListener('click', function() {
+							eliminarActividad(res[i].id);
+						});
 					}
 					//Se recorren todos los dias del mes.
 					for (let j = 1; j <= ultimoDiaMes; j++) {
@@ -295,7 +336,15 @@
 				}
 			});
 		}
-		/* Para que pasandole el nombre del mes devuelva el numero de dicho mes. */
+
+
+		/**
+		 * 
+		 * Para que pasandole el nombre del mes devuelva el numero de dicho mes.
+		 * @param mes el nombre del mes.
+		 * 
+		 */
+
 		function devolverNumeroMes(mes) {
 			let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 			let devolver = 0;
@@ -308,6 +357,44 @@
 				devolver = "0" + devolver;
 			}
 			return devolver;
+		}
+
+
+		/**
+		 * 
+		 * Funcion para eliminar una actividad pasando la id de la actividad.
+		 * Despues de eliminar la actividad aparece un mensaje de que se ha eliminado correctamente
+		 * y despues de 5 segundos desaparece el mensaje.
+		 * @param id la id de la actividad.
+		 * 
+		 */
+		
+		function eliminarActividad(id) {
+			let url = '{{ url("/calendario") }}';
+			$.ajax({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+				},
+				type: 'POST',
+				url: url,
+				data: {
+					consulta: 'eliminar',
+					id: id
+				}
+			}).done(function(res) {
+				if (document.querySelector(".eliminado") != null && document.querySelector(".resultados-calendario") != null) {
+					document.querySelector(".eliminado").style.display = "block";
+					document.querySelector(".resultados-calendario").style.display = "none";
+					document.querySelector(".eliminado").innerText = res;
+					setTimeout(function() {
+						document.querySelector(".eliminado").innerText = "";
+						document.querySelector(".eliminado").style.display = "none";
+						document.querySelector(".resultados-calendario").style.display = "block";
+						hacerConsulta();
+					}, 5000);
+				}
+
+			});
 		}
 	});
 </script>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -10,18 +11,33 @@ use Illuminate\Support\Facades\DB;
 class CalendarioController extends Controller
 {
 
+
     /**
      * 
-     * Funcion que devuelve todas las actividades del usuario.
-     * @return Array Todas las actividades del usuario.
+     * Funcion para comprobar si lo ha llamado el boton borrar o ver
+     * actividades.
+     * Si $request->consulta es eliminar se elimina la actividad.
+     * Sino se devuelven todas las actividades del usuario.
+     * @param request los datos pasados por Ajax.
+     * @return mensaje si la actividad se ha eliminado correctamente.
+     * @return consulta devuelve el resultado de la consulta.
+     * 
      * 
      */
 
-    public function verActividades()
+    public function index(Request $request)
     {
-        $idUsuario = auth()->user()->id;
-        if (!is_null($idUsuario) && trim($idUsuario)) {
-            return DB::table('calendario')->where('idusuario', $idUsuario)->get();
+        if ($request->consulta == "eliminar") {
+            $idUsuario = auth()->user()->id;
+            $id = $request->id;
+            DB::delete("DELETE FROM calendario WHERE idusuario = $idUsuario AND id = $id");
+            unset($request);
+            return "Actividad eliminada correctamente.";
+        } else {
+            $idUsuario = auth()->user()->id;
+            if (!is_null($idUsuario) && trim($idUsuario)) {
+                return DB::table('calendario')->where('idusuario', $idUsuario)->get();
+            }
         }
     }
 
@@ -46,8 +62,12 @@ class CalendarioController extends Controller
         if (trim($nombre) != "" && !is_null($nombre)) {
             if (trim($descripcion) != "" && !is_null($descripcion)) {
                 if (trim($fecha) != "" && !is_null($fecha)) {
-                    DB::insert("INSERT INTO calendario VALUES('0', $idUsuario, '$nombre', '$descripcion', '$fecha')");
-                    return redirect()->to('/añadirActividad')->with('añadido-correctamente', 'Se ha añadido la actividad correctamente.');
+                    try {
+                        DB::insert("INSERT INTO calendario VALUES('0', $idUsuario, '$nombre', '$descripcion', '$fecha')");
+                        return redirect()->to('/añadirActividad')->with('añadido-correctamente', 'Se ha añadido la actividad correctamente.');
+                    } catch (QueryException $qe) {
+                        return redirect()->to('/añadirActividad')->with('error-añadir', 'No se ha podido añadir la actividad.');
+                    }
                 } else {
                     return redirect()->to('/añadirActividad')->with('error-fecha', "La fecha es incorrecta");
                 }
@@ -55,7 +75,7 @@ class CalendarioController extends Controller
                 return redirect()->to('/añadirActividad')->with('error-descripcion', "La descripcion es incorrecta.");
             }
         } else {
-            return redirect()->to('/añadirActividad')->with('error-nombre', "Nombre de la actividad incorrecto.");
+            return redirect()->to('/añadirActividad')->with('error-nombre', "Nombre de la actividad incorrecta.");
         }
     }
 }
