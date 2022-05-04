@@ -64,7 +64,7 @@ class CalendarioController extends Controller
                 if (trim($fecha) != "" && !is_null($fecha)) {
                     try {
                         DB::insert("INSERT INTO calendario VALUES('0', $idUsuario, '$nombre', '$descripcion', '$fecha')");
-                        return redirect()->to('/añadirActividad')->with('añadido-correctamente', 'Se ha añadido la actividad correctamente.');
+                        return redirect()->to('/añadirActividad')->with('añadido-correctamente', 'Se ha añadido correctamente la actividad.');
                     } catch (QueryException $qe) {
                         return redirect()->to('/añadirActividad')->with('error-añadir', 'No se ha podido añadir la actividad.');
                     }

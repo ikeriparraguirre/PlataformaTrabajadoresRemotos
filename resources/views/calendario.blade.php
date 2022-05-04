@@ -340,7 +340,7 @@
 						modalFooter.appendChild(botonCerrar);
 						modalHeader.appendChild(tituloModal);
 						modalContent.appendChild(modalHeader);
-						
+
 						modalContent.appendChild(modalBody);
 						modalContent.appendChild(modalFooter);
 						modalDialog.appendChild(modalContent);
