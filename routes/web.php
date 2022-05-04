@@ -8,6 +8,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\ArchivosController;
 use App\Http\Controllers\CalendarioController;
 
+
 /* Especificamos las rutas de nuestro sitio web y despues con el middleware especificamos si pueden acceder los logeados o no logeados. */
 
 Route::get('/', function () {
@@ -30,7 +31,9 @@ Route::get('/añadirActividad', function(){
     return view('añadirActividad');
 })->middleware('auth');
 
+
 /* Especificamos que metodos ejecuta el POST de cada pagina. */
+
 Route::post('/', [UsuarioController::class, 'crearSesion'])->name('crearSesion');
 Route::post('/registro', [UsuarioController::class, 'registrarUsuario'])->name('registro.registrarUsuario');
 Route::post('/subir', [ArchivosController::class, 'subirArchivo']);

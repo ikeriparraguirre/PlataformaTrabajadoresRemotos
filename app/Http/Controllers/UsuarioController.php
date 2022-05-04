@@ -16,6 +16,7 @@ class UsuarioController extends Controller
      * asi se muestran los errores correspondientes.
      * Si no hay ningun error se crea un usuario y se introduce a la base de datos.
      * Por ultimo se redireccionara a la pagina de archivos.
+     * @return redirecciona a la pagina con el mensaje.
      * 
      */
 
@@ -44,6 +45,7 @@ class UsuarioController extends Controller
      * Primero se comprueba si el correo electronico y la contraseña es correcto, si no
      * es asi se muestra un error.
      * Si es correcto se redirecciona a la pagina de archivos.
+     * @return redirecciona a la pagina con el mensaje.
      * 
      */
 
@@ -63,6 +65,7 @@ class UsuarioController extends Controller
      * 
      * Funcion para cerrar la sesion.
      * Se elimina la sesion y redireccionara a la pagina de inicio.
+     * @return redirecciona a la pagina con el mensaje.
      * 
      */
     

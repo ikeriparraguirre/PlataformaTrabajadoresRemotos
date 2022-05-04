@@ -21,6 +21,7 @@ class ArchivosController extends Controller
      * Si hay algun error se redireccionara a la pagina de subir archivo indicando en un alert el mensaje de error.
      * Si el archivo se ha subido correctamente se redireccionara a la pagina de subir archivo indicando en un
      * alert que el archivo se ha subido correctamente.
+     * @return redirecciona a la pagina con el mensaje.
      * 
      */
 
@@ -70,6 +71,7 @@ class ArchivosController extends Controller
      * ningun archivo.
      * Si se encuentra algun archivo se redireccionara a la pagina de archivos con el arrayResultados que seran todos los resultados
      * a mostrar en la pagina.
+     * @return redirecciona a la pagina con el mensaje.
      * 
      */
 

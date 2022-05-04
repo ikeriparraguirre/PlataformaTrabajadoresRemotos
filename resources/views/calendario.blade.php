@@ -129,8 +129,8 @@
 				<a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
 			</div>
 			<div class="tercero">
-                    <a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check actual"></i></a>
-                </div>
+				<a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check actual"></i></a>
+			</div>
 			<div class="cuarto">
 				<a href="{{ route('cerrarSesion.cerrarSesion') }}"><i class="bi bi-x cerrar-sesion"></i></a>
 			</div>
@@ -142,8 +142,11 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
 <script>
 	window.addEventListener('load', function() {
+		//Para que cuando cargue la pagina haga una consulta Ajax y muestre las actividades del dia y del dia seleccionado.
 		hacerConsulta();
+		//Para capturar el dia seleccionado del calendario.
 		let seleccionado = document.querySelector(".selected");
+		//Comprueba si hay algun dia seleccionado y si es asi llama hacerConsulta cada 500 milisegundos.
 		setInterval(function() {
 			let ahoraSeleccionado = document.querySelector(".selected");
 			if (seleccionado != ahoraSeleccionado) {
@@ -151,15 +154,20 @@
 				seleccionado = document.querySelector(".selected");
 			}
 		}, 500);
-		document.querySelector(".next-button").addEventListener('click', function(){
+		//Para que cuando se de en el boton de siguiente mes llame a hacerConsulta.
+		document.querySelector(".next-button").addEventListener('click', function() {
 			hacerConsulta();
 		});
-		document.querySelector(".pre-button").addEventListener('click', function(){
+		//Para que cuando se de en el boton de mes anterior llame a hacerConsulta.
+		document.querySelector(".pre-button").addEventListener('click', function() {
 			hacerConsulta();
 		});
-		document.querySelector("#reset").addEventListener('click', function(){
+		//Para que cuando se de en el boon de "Hoy" llame a hacerConsulta.
+		document.querySelector("#reset").addEventListener('click', function() {
 			hacerConsulta();
 		});
+
+		//Hace una peticion post que luego se capturara en CalendarioController.
 		function hacerConsulta() {
 			let url = '{{ url("/calendario") }}'
 			$.ajax({
@@ -173,37 +181,51 @@
 					año: document.querySelector(".head-month").innerText.split("-")[1].trim()
 				}
 			}).done(function(res) {
-				console.log(res);
+				//Para que cuando el CalendarioController devuelva la consulta.
 				let hoy;
 				let seleccionado;
+				//Se captura el div donde se añadiran todas las actividades del dia.
 				let resultadosHoy = document.querySelector(".resultados-hoy");
+				//Se captura el div donde se añadiran todos las otras actividades del dia.
 				let resultadosOtros = document.querySelector(".resultados-otros");
+				/* Se comprueba si el dia de hoy es el mes en que esta el calendario y si es
+				asi se captura el dia. */
 				if (document.querySelector("#today") != null) {
 					hoy = document.querySelector("#today").innerText;
 				}
+				/* Se comprueba si el dia seleccionado esta es el mes en que esta el calendario
+				y si es asi se captura el dia.*/
 				if (document.querySelector('.selected') != null) {
 					seleccionado = document.querySelector('.selected').innerText
 				}
+				//Se captura el mes y el año y se guarda cada una en su variable.
 				let mes = document.querySelector(".head-month").innerText.split('-')[0].trim();
 				let año = document.querySelector(".head-month").innerText.split('-')[1].trim();
+				//Se capturan todos los dias del mes.
 				let dias = document.querySelectorAll(".dia");
 				let ultimoDiaMes = 0;
+				//Se obtiene cual es el ultimo dia del mes.
 				for (let i = 0; i < dias.length; i++) {
 					if (!dias[i].getAttribute("id")) {
 						ultimoDiaMes = dias[i].innerText;
 					}
 				}
-				console.log(ultimoDiaMes);
+
+				//Para que si el dia de hoy y el seleccionado son menores a 10 que se ponga un 0 delante.
 				if (parseInt(hoy) < 10) {
 					hoy = "0" + hoy;
 				}
 				if (parseInt(seleccionado) < 10) {
 					seleccionado = "0" + seleccionado;
 				}
+				//Para resetar el resultado de hoy y de otros y que no se acumulen las actividades.
 				resultadosHoy.innerHTML = "";
 				resultadosOtros.innerHTML = "";
+				//Se recorren todas las actividades del usuario.
 				for (let i = 0; i < res.length; i++) {
+					//Si la actividad es del dia de hoy.
 					if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + hoy) {
+						//Se crea el boton, el div y se añade al DOM.
 						let boton = document.createElement("button");
 						let texto = document.createTextNode(res[i].actividad);
 						boton.appendChild(texto);
@@ -223,7 +245,9 @@
 						resultadosHoy.appendChild(boton);
 						resultadosHoy.appendChild(div);
 					}
+					//Si la actividad es del dia seleccionado.
 					else if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + seleccionado) {
+						//Se crea el boton, el div y se añade al DOM.
 						let boton = document.createElement("button");
 						let texto = document.createTextNode(res[i].actividad);
 						boton.appendChild(texto);
@@ -243,17 +267,25 @@
 						resultadosOtros.appendChild(boton);
 						resultadosOtros.appendChild(div);
 					}
+					//Se recorren todos los dias del mes.
 					for (let j = 1; j <= ultimoDiaMes; j++) {
+						//Para que si el dia es menor a 10, se coloque un 0 delante.
 						let x = j;
 						if (x < 10) {
 							x = "0" + x;
 						}
+						//Si la fecha es la misma que la del calendario.
 						if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + x) {
+							//Se capturen todos los dias.
 							let todosLosDias = document.querySelectorAll(".dia");
+							//Se recorren todos los dias.
 							for (let z = 0; z < todosLosDias.length; z++) {
+								//Si el dia seleccionado no es un dia vacio.
 								if (!todosLosDias[z].getAttribute("id")) {
+									//Se comprueba si el dia del calendario es el mismo que el mes.
 									if (parseInt(todosLosDias[z].innerText) == j) {
-										console.log("entra a azul.");
+										/* Se le añade la clase azul al elemento, lo que hace es cambiar
+										el color de fondo. */
 										todosLosDias[z].classList.add("azul");
 									}
 								}
@@ -263,12 +295,12 @@
 				}
 			});
 		}
-
+		/* Para que pasandole el nombre del mes devuelva el numero de dicho mes. */
 		function devolverNumeroMes(mes) {
 			let meses = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
 			let devolver = 0;
 			for (let i = 0; i < meses.length; i++) {
-				if (meses[i].toUpperCase() == mes) {
+				if (meses[i].toUpperCase() == mes.toUpperCase()) {
 					devolver = i + 1;
 				}
 			}

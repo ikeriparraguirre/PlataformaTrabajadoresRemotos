@@ -56,8 +56,8 @@
                 <a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
             </div>
             <div class="tercero">
-                    <a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check actual"></i></a>
-                </div>
+                <a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check actual"></i></a>
+            </div>
             <div class="cuarto">
                 <a href="{{ route('cerrarSesion.cerrarSesion') }}"><i class="bi bi-x cerrar-sesion"></i></a>
             </div>
@@ -66,6 +66,7 @@
 
 </body>
 <script>
+    //Para colocar en el input date por defecto la fecha de hoy.
     Date.prototype.toDateInputValue = (function() {
         var local = new Date(this);
         local.setMinutes(this.getMinutes() - this.getTimezoneOffset());

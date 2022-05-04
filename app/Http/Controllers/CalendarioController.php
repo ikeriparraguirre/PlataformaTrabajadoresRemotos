@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\DB;
 class CalendarioController extends Controller
 {
 
+    /**
+     * 
+     * Funcion que devuelve todas las actividades del usuario.
+     * @return Array Todas las actividades del usuario.
+     * 
+     */
+
     public function verActividades()
     {
         $idUsuario = auth()->user()->id;
@@ -17,6 +24,18 @@ class CalendarioController extends Controller
             return DB::table('calendario')->where('idusuario', $idUsuario)->get();
         }
     }
+
+
+    /**
+     * 
+     * Funcion para añadir una actividad a la base de datos.
+     * Se comprueban si el nombre de la actividad la descripcion y la fecha
+     * son correctas y si es asi se añade la actividad a la base de datos y redirige
+     * a la pagina indicando que la actividad se ha añadido correctamente.
+     * Si ha habido algun error se redirige a la pagina indicando que ha habido un error.
+     * @param Request la solicitud con los datos de la actividad.
+     * @return redireccion a la pagina con el mensaje.
+     */
 
     public function añadirActividad(Request $request)
     {
