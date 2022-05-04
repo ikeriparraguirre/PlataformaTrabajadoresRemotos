@@ -15,12 +15,10 @@
 </head>
 
 <body>
+	<div class="logo-calendario text-center">
+		<a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision"></a>
+	</div>
 	<div class="col-md-12 calendario">
-		<div class="row justify-content-center">
-			<div class="col-md-6 text-center mb-5">
-				<h2 class="heading-section"></h2>
-			</div>
-		</div>
 		<div class="elegant-calencar d-md-flex">
 			<div class="wrap-header d-flex align-items-center img" style="background-image: url(images/foto_camara.jpg);">
 				<p id="reset">Hoy</p>
@@ -108,7 +106,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="resultados-calendario">
+	<div class="col-md-12 resultados-calendario">
 		<div class="resultados-hoy">
 
 		</div>
@@ -118,7 +116,7 @@
 	</div>
 	<div class="insertar-actividad">
 		<div class="enviar-actividad">
-			<a href="{{ url('/añadirActividad') }}"><button type="submit" name="añadir-actividad" class="btn btn-primary btn-añadir-actividad"><i class="bi bi-plus-circle mr-2"></i>Añadir Actividad</button></a>
+			<a href="{{ url('/añadirActividad') }}"><button type="submit" name="añadir-actividad" class="btn btn-primary btn-pagina-añadir-actividad"><i class="bi bi-plus-circle mr-2"></i>Añadir Actividad</button></a>
 		</div>
 		</form>
 	</div>
@@ -150,7 +148,15 @@
 				seleccionado = document.querySelector(".selected");
 			}
 		}, 500);
-
+		document.querySelector(".next-button").addEventListener('click', function(){
+			hacerConsulta();
+		});
+		document.querySelector(".pre-button").addEventListener('click', function(){
+			hacerConsulta();
+		});
+		document.querySelector("#reset").addEventListener('click', function(){
+			hacerConsulta();
+		});
 		function hacerConsulta() {
 			let url = '{{ url("/calendario") }}'
 			$.ajax({
@@ -177,14 +183,22 @@
 				}
 				let mes = document.querySelector(".head-month").innerText.split('-')[0].trim();
 				let año = document.querySelector(".head-month").innerText.split('-')[1].trim();
-				console.log(devolverNumeroMes(mes));
-				console.log(mes);
+				let dias = document.querySelectorAll(".dia");
+				let ultimoDiaMes = 0;
+				for (let i = 0; i < dias.length; i++) {
+					if (!dias[i].getAttribute("id")) {
+						ultimoDiaMes = dias[i].innerText;
+					}
+				}
+				console.log(ultimoDiaMes);
 				if (parseInt(hoy) < 10) {
 					hoy = "0" + hoy;
 				}
 				if (parseInt(seleccionado) < 10) {
 					seleccionado = "0" + seleccionado;
 				}
+				resultadosHoy.innerHTML = "";
+				resultadosOtros.innerHTML = "";
 				for (let i = 0; i < res.length; i++) {
 					if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + hoy) {
 						let boton = document.createElement("button");
@@ -195,18 +209,53 @@
 						boton.setAttribute("data-toggle", "collapse");
 						boton.setAttribute("data-target", "#collapse" + res[i].id);
 						boton.setAttribute("aria-expanded", "false");
-						boton.setAttribute("aria-controlls", "collapseexample");
 						let div = document.createElement("div");
 						div.classList.add("collapse");
 						div.setAttribute("id", "collapse" + res[i].id);
 						let otroDiv = document.createElement("div");
-						otroDiv.classList.add("card");
-						otroDiv.classList.add("card-body");
+						otroDiv.classList.add("card", "card-body");
 						let textoDiv = document.createTextNode(res[i].descripcion);
 						otroDiv.appendChild(textoDiv);
 						div.appendChild(otroDiv);
 						resultadosHoy.appendChild(boton);
 						resultadosHoy.appendChild(div);
+					}
+					else if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + seleccionado) {
+						let boton = document.createElement("button");
+						let texto = document.createTextNode(res[i].actividad);
+						boton.appendChild(texto);
+						boton.classList.add("btn", "actividades-otros");
+						boton.setAttribute("type", "button");
+						boton.setAttribute("data-toggle", "collapse");
+						boton.setAttribute("data-target", "#collapse" + res[i].id);
+						boton.setAttribute("aria-expanded", "false");
+						let div = document.createElement("div");
+						div.classList.add("collapse");
+						div.setAttribute("id", "collapse" + res[i].id);
+						let otroDiv = document.createElement("div");
+						otroDiv.classList.add("card", "card-body");
+						let textoDiv = document.createTextNode(res[i].descripcion);
+						otroDiv.appendChild(textoDiv);
+						div.appendChild(otroDiv);
+						resultadosOtros.appendChild(boton);
+						resultadosOtros.appendChild(div);
+					}
+					for (let j = 1; j <= ultimoDiaMes; j++) {
+						let x = j;
+						if (x < 10) {
+							x = "0" + x;
+						}
+						if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + x) {
+							let todosLosDias = document.querySelectorAll(".dia");
+							for (let z = 0; z < todosLosDias.length; z++) {
+								if (!todosLosDias[z].getAttribute("id")) {
+									if (parseInt(todosLosDias[z].innerText) == j) {
+										console.log("entra a azul.");
+										todosLosDias[z].classList.add("azul");
+									}
+								}
+							}
+						}
 					}
 				}
 			});

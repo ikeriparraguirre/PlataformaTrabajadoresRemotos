@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-añadir-actividad">
+    <a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-añadir-actividad"></a>
     <div class="añadir-actividad">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
@@ -27,7 +27,7 @@
                 <input type="text" name="actividad" class="form-control" id="actividad" aria-describedby="actividad" placeholder="Nombre de la actividad">
                 <textarea name="descripcion" rows="5" placeholder="Descripcion" class="descripcion"></textarea>
                 <input type="date" name="fecha" class="form-control" id="fecha" aria-describedby="fecha">
-                <button type="submit" name="añadir-actividad" class="btn btn-primary btn-añadir-actividad mt-5"><i class="bi bi-plus-circle"></i></button>
+                <button type="submit" name="añadir-actividad" class="btn btn-primary btn-añadir-actividad mt-4"><i class="bi bi-plus-circle"></i></button>
             </div>
         </form>
         {{-- Se comprueba si hay algun mensaje de error y si es asi se muestra el mensaje. --}}

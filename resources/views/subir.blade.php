@@ -36,11 +36,9 @@
                 <input type="text" name="nombre-archivo" class="form-control" id="nombre-archivo" aria-describedby="Nombre del archivo">
             </div>
             <div class="boton-subir">
-                <button type="submit" class="subir">
-                    <div class="icono-texto-subir">
+                <button type="submit" class="btn-subir">
                         <i class="bi bi-cloud-upload"></i>
-                        <p class="texto-btn-subir">Subir</p>
-                    </div>
+                        Subir
                 </button>
             </div>
             <div class="estado-archivo">

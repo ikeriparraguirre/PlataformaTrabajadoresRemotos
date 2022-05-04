@@ -29,8 +29,8 @@ Route::get('/calendario', function(){
 Route::get('/añadirActividad', function(){
     return view('añadirActividad');
 })->middleware('auth');
-/* Especificamos que metodos ejecuta el POST de cada pagina. */
 
+/* Especificamos que metodos ejecuta el POST de cada pagina. */
 Route::post('/', [UsuarioController::class, 'crearSesion'])->name('crearSesion');
 Route::post('/registro', [UsuarioController::class, 'registrarUsuario'])->name('registro.registrarUsuario');
 Route::post('/subir', [ArchivosController::class, 'subirArchivo']);

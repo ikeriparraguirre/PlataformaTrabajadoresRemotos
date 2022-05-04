@@ -17,7 +17,6 @@
             this.options = options;
             this.draw();
         }
-        document.querySelector(".heading-section").innerHTML = "Calendario de " + new Date().getFullYear();
         
         Calendar.prototype.draw = function () {
             this.getCookie('selected_day');
@@ -51,7 +50,7 @@
             for (var k = 0; k < 42; k++) {
                 days[k].innerHTML = '';
                 days[k].id = '';
-                days[k].className = '';
+                days[k].className = 'dia';
             }
 
             for (var i = 1; i <= nDays; i++) {
@@ -72,7 +71,7 @@
                 }
                 if (selectedDay) {
                     if ((j === selectedDay.getDate() + startDay - 1) && (month === selectedDay.getMonth()) && (year === selectedDay.getFullYear())) {
-                        days[j].className = "selected";
+                        days[j].className = "dia selected";
                         this.drawHeader(selectedDay.getDate());
                     }
                 }
@@ -83,7 +82,7 @@
             var selected = document.getElementsByClassName("selected"),
                 len = selected.length;
             if (len !== 0) {
-                selected[0].className = "";
+                selected[0].className = "dia";
             }
             o.className = "selected";
             selectedDay = new Date(year, month, o.innerHTML);

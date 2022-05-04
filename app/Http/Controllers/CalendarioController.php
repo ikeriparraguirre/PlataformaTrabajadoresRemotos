@@ -36,7 +36,7 @@ class CalendarioController extends Controller
                 return redirect()->to('/añadirActividad')->with('error-descripcion', "La descripcion es incorrecta.");
             }
         } else {
-            return redirect()->to('/añadirActividad')->with('error-nombre', "El nombre de la actividad es incorrecto.");
+            return redirect()->to('/añadirActividad')->with('error-nombre', "Nombre de la actividad incorrecto.");
         }
     }
 }
