@@ -126,9 +126,12 @@
 				<a href="{{ url('/subir') }}"><i class="bi bi-cloud-arrow-up subir"></i></a>
 			</div>
 			<div class="segundo">
-				<a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill actual"></i></a>
+				<a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
 			</div>
 			<div class="tercero">
+                    <a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check actual"></i></a>
+                </div>
+			<div class="cuarto">
 				<a href="{{ route('cerrarSesion.cerrarSesion') }}"><i class="bi bi-x cerrar-sesion"></i></a>
 			</div>
 		</div>

@@ -73,6 +73,9 @@
                     <a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill actual"></i></a>
                 </div>
                 <div class="tercero">
+                    <a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check calendario"></i></a>
+                </div>
+                <div class="cuarto">
                     <a href="{{ route('cerrarSesion.cerrarSesion') }}"><i class="bi bi-x cerrar-sesion"></i></a>
                 </div>
             </div>

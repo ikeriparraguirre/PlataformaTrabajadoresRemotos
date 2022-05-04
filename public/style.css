@@ -31,6 +31,7 @@ body {
     .bi-caret-right::before {
         transform: scale(2);
     }
+
     .direccion {
         color: #70BADF;
     }
@@ -107,6 +108,7 @@ body {
         border-radius: 20px;
         border: 2px solid #70BADF;
         border-style: dashed;
+        overflow: hidden;
     }
 
     .input-file {
@@ -159,7 +161,7 @@ body {
         vertical-align: middle;
     }
 
-    .navbar{
+    .navbar {
         height: 6%;
         background-color: #736A61;
         width: 80%;
@@ -169,7 +171,8 @@ body {
         border-radius: 20px;
         overflow: auto;
     }
-    .navbar-subir{
+
+    .navbar-subir {
         height: 6.5%;
         background-color: #736A61;
         width: 80%;
@@ -182,6 +185,7 @@ body {
         left: 10%;
         overflow: auto;
     }
+
     .navbar-calendario {
         height: 8%;
         background-color: #736A61;
@@ -195,24 +199,29 @@ body {
         left: 10%;
         overflow: auto;
     }
+
     .bi-file-code::before {
         font-size: 100%;
         margin-top: 2%;
         vertical-align: -webkit-baseline-middle;
     }
-    .logo-calendario img{
+
+    .logo-calendario img {
         width: 50%;
         margin: auto;
     }
-    .resultados-calendario{
+
+    .resultados-calendario {
         overflow: auto;
         margin: 1% auto;
     }
-    .insertar-actividad{
+
+    .insertar-actividad {
         margin: 4% auto;
         text-align: center;
     }
-    .logo-tasiva-añadir-actividad{
+
+    .logo-tasiva-añadir-actividad {
         display: block;
         margin: auto;
         width: 50%;
@@ -430,7 +439,7 @@ body {
         margin-top: 2%;
     }
 
-    .navbar-subir{
+    .navbar-subir {
         position: absolute;
         left: 10%;
         height: 6.5%;
@@ -442,10 +451,12 @@ body {
         margin-bottom: 2%;
         border-radius: 20px;
     }
+
     .bi-file-code::before {
         font-size: 200%;
         margin-top: 2%;
     }
+
     .navbar-calendario {
         position: absolute;
         left: 10%;
@@ -458,23 +469,28 @@ body {
         margin-bottom: 2%;
         border-radius: 20px;
     }
-    .resultados-calendario{
+
+    .resultados-calendario {
         max-width: 700px;
     }
-    .logo-calendario img{
+
+    .logo-calendario img {
         width: 25%;
         margin: auto;
     }
-    .resultados-calendario{
+
+    .resultados-calendario {
         height: 15vh;
         overflow: auto;
         margin: 1% auto;
     }
-    .insertar-actividad{
+
+    .insertar-actividad {
         margin: 2% auto;
         text-align: center;
     }
-    .logo-tasiva-añadir-actividad{
+
+    .logo-tasiva-añadir-actividad {
         width: 20%;
         display: block;
         margin: auto;
@@ -487,6 +503,7 @@ body {
     display: inline-block;
     margin: 2%;
 }
+
 .imagen-resultado {
     font-size: 1000%;
     height: 30vh;
@@ -535,8 +552,9 @@ input[type="search"]::placeholder {
 
 .primero,
 .segundo,
-.tercero {
-    width: 32%;
+.tercero,
+.cuarto {
+    width: 24%;
     display: inline-block;
     margin: auto;
 }
@@ -547,7 +565,8 @@ input[type="search"]::placeholder {
 
 .subir,
 .archivos,
-.cerrar-sesion {
+.cerrar-sesion,
+.calendario {
     color: #FFFFFF;
 }
 
@@ -565,6 +584,14 @@ input[type="search"]::placeholder {
 .bi-x {
     font-size: 333%;
     margin-right: 5%;
+}
+
+.bi-calendar-check {
+    font-size: 280%;
+    margin-right: 5%;
+}
+.bi-calendar-check::before{
+    vertical-align: baseline;
 }
 
 #nombre-archivo {
@@ -590,68 +617,85 @@ input[type="search"]::placeholder {
     width: 100%;
     border: 0;
 }
-.calendario{
+
+.calendario {
     margin-top: 1%;
 }
-.btn-añadir-actividad{
+
+.btn-añadir-actividad {
     width: 6vh;
     height: 6vh;
 }
-.btn-pagina-añadir-actividad{
+
+.btn-pagina-añadir-actividad {
     transform: scale(1.6);
 }
-.añadir-actividad{
+
+.añadir-actividad {
     width: 80%;
     margin: 1% auto;
 }
-.actividad{
+
+.actividad {
     width: 50%;
     text-align: center;
     margin: auto;
 }
-.actividad>*{
+
+.actividad>* {
     margin-top: 2%;
 }
-.descripcion{
+
+.descripcion {
     padding: 1%;
     width: 100%;
 }
-.mensaje-actividad{
+
+.mensaje-actividad {
     width: 50%;
     margin: 2% auto;
     text-align: center;
     font-size: 1.2rem;
 }
-.resultados-hoy>button, .resultados-otros>button{
+
+.resultados-hoy>button,
+.resultados-otros>button {
     width: 48%;
     color: white;
     margin: 1%;
 }
+
 /* Para poner color al contenido del collapse. */
-.card-body{
+.card-body {
     color: black;
     margin-left: 1%;
     overflow: auto;
 }
-.actividades-hoy{
+
+.actividades-hoy {
     background-color: #e13a9d;
 }
-.actividades-otros{
+
+.actividades-otros {
     background-color: #007bff;
 }
-.logo-calendario{
+
+.logo-calendario {
     width: 50%;
     margin: auto;
 }
-.resultados-calendario button:hover{
+
+.resultados-calendario button:hover {
     color: #FFFFFF;
 }
-.btn-subir{
+
+.btn-subir {
     height: 100%;
     background-color: transparent;
     border: 0px solid black;
     color: #FFFFFF;
 }
-.bi-plus-circle::before{
+
+.bi-plus-circle::before {
     transform: scale(1.5);
 }
