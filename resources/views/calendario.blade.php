@@ -228,83 +228,130 @@
 				for (let i = 0; i < res.length; i++) {
 					//Si la actividad es del dia de hoy.
 					if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + hoy) {
-						//Se crea el boton, el div y se añade al DOM.
+						//Se crea el boton.
 						let boton = document.createElement("button");
 						let texto = document.createTextNode(res[i].actividad);
 						boton.appendChild(texto);
 						boton.classList.add("btn", "actividades-hoy");
 						boton.setAttribute("type", "button");
-						boton.setAttribute("data-toggle", "collapse");
-						boton.setAttribute("data-target", "#collapse" + res[i].id);
-						boton.setAttribute("aria-expanded", "false");
-						let div = document.createElement("div");
-						div.classList.add("collapse");
-						div.setAttribute("id", "collapse" + res[i].id);
-						let card = document.createElement("div");
-						card.classList.add("card", "card-body");
-						let cardTitle = document.createElement("h3");
-						cardTitle.classList.add("card-title");
-						let tituloCard = document.createTextNode(res[i].actividad);
-						cardTitle.appendChild(tituloCard);
-						card.appendChild(cardTitle);
-						let cardText = document.createElement("p");
-						let textoCard = document.createTextNode(res[i].descripcion);
-						cardText.appendChild(textoCard);
-						card.appendChild(cardText);
+						boton.setAttribute("data-toggle", "modal");
+						boton.setAttribute("data-target", "#modal" + res[i].id);
+						//Se crea el modal.
+						let modal = document.createElement("div");
+						modal.classList.add("modal");
+						modal.setAttribute("tabindex", "-1");
+						modal.setAttribute("id", "modal" + res[i].id);
+						let modalDialog = document.createElement("div");
+						modalDialog.classList.add("modal-dialog");
+						let modalContent = document.createElement("div");
+						modalContent.classList.add("modal-content");
+						let modalHeader = document.createElement("div");
+						modalHeader.classList.add("modal-header");
+						let tituloModal = document.createElement("h5");
+						tituloModal.classList.add("modal-title");
+						let textoTituloModal = document.createTextNode(res[i].actividad);
+						tituloModal.appendChild(textoTituloModal);
+						let modalBody = document.createElement("div");
+						modalBody.classList.add("modal-body");
+						let parrafoBody = document.createElement("p");
+						let textoBody = document.createTextNode(res[i].descripcion);
+						parrafoBody.appendChild(textoBody);
+						modalBody.appendChild(parrafoBody);
 						let botonEliminar = document.createElement("button");
+						let textoBotonEliminar = document.createTextNode("Eliminar");
 						botonEliminar.setAttribute("type", "button");
-						botonEliminar.classList.add("btn", "btn-danger");
 						botonEliminar.setAttribute("name", res[i].id);
-						let textoBoton = document.createTextNode("Eliminar");
-						botonEliminar.appendChild(textoBoton);
-						card.appendChild(botonEliminar);
-						div.appendChild(card);
+						botonEliminar.classList.add("btn", "btn-danger", "btn-eliminar-actividad");
+						botonEliminar.appendChild(textoBotonEliminar);
+						let modalFooter = document.createElement("div");
+						modalFooter.classList.add("modal-footer");
+						let botonCerrar = document.createElement("button");
+						botonCerrar.setAttribute("type", "button");
+						botonCerrar.classList.add("btn", "btn-secondary");
+						botonCerrar.setAttribute("data-dismiss", "modal");
+						let textoBoton = document.createTextNode("Cerrar");
+						//Se añaden unos elementos dentro de otros.
+						botonCerrar.appendChild(textoBoton);
+						modalFooter.appendChild(botonEliminar);
+						modalFooter.appendChild(botonCerrar);
+						modalHeader.appendChild(tituloModal);
+						modalContent.appendChild(modalHeader);
+						modalContent.appendChild(modalBody);
+						modalContent.appendChild(modalFooter);
+						modalDialog.appendChild(modalContent);
+						modal.appendChild(modalDialog);
+						//Se añade el modal y el boton al DOM.
+						resultadosHoy.appendChild(modal);
 						resultadosHoy.appendChild(boton);
-						resultadosHoy.appendChild(div);
 						/* Se añade al evento de click al boton de eliminar para
 						que si se clicka llame a eliminarActividad y borre la actividad. */
 						botonEliminar.addEventListener('click', function() {
+							$('#modal' + res[i].id).modal('hide');
 							eliminarActividad(res[i].id);
 						});
 					}
 					//Si la actividad es del dia seleccionado.
 					else if (res[i].fecha == año + "-" + devolverNumeroMes(mes) + "-" + seleccionado) {
-						//Se crea el boton, el div y se añade al DOM.
+						//Se crea el boton.
 						let boton = document.createElement("button");
 						let texto = document.createTextNode(res[i].actividad);
 						boton.appendChild(texto);
 						boton.classList.add("btn", "actividades-otros");
 						boton.setAttribute("type", "button");
-						boton.setAttribute("data-toggle", "collapse");
-						boton.setAttribute("data-target", "#collapse" + res[i].id);
-						boton.setAttribute("aria-expanded", "false");
-						let div = document.createElement("div");
-						div.classList.add("collapse");
-						div.setAttribute("id", "collapse" + res[i].id);
-						let card = document.createElement("div");
-						card.classList.add("card", "card-body");
-						let cardTitle = document.createElement("h3");
-						cardTitle.classList.add("card-title");
-						let tituloCard = document.createTextNode(res[i].actividad);
-						cardTitle.appendChild(tituloCard);
-						card.appendChild(cardTitle);
-						let cardText = document.createElement("p");
-						let textoCard = document.createTextNode(res[i].descripcion);
-						cardText.appendChild(textoCard);
-						card.appendChild(cardText);
+						boton.setAttribute("data-toggle", "modal");
+						boton.setAttribute("data-target", "#modal" + res[i].id);
+						//Se crea el modal.
+						let modal = document.createElement("div");
+						modal.classList.add("modal");
+						modal.setAttribute("tabindex", "-1");
+						modal.setAttribute("id", "modal" + res[i].id);
+						let modalDialog = document.createElement("div");
+						modalDialog.classList.add("modal-dialog");
+						let modalContent = document.createElement("div");
+						modalContent.classList.add("modal-content");
+						let modalHeader = document.createElement("div");
+						modalHeader.classList.add("modal-header");
+						let tituloModal = document.createElement("h5");
+						tituloModal.classList.add("modal-title");
+						let textoTituloModal = document.createTextNode(res[i].actividad);
+						tituloModal.appendChild(textoTituloModal);
+						let modalBody = document.createElement("div");
+						modalBody.classList.add("modal-body");
+						let parrafoBody = document.createElement("p");
+						let textoBody = document.createTextNode(res[i].descripcion);
+						parrafoBody.appendChild(textoBody);
+						modalBody.appendChild(parrafoBody);
 						let botonEliminar = document.createElement("button");
 						botonEliminar.setAttribute("type", "button");
-						botonEliminar.classList.add("btn", "btn-danger");
 						botonEliminar.setAttribute("name", res[i].id);
-						let textoBoton = document.createTextNode("Eliminar");
-						botonEliminar.appendChild(textoBoton);
-						card.appendChild(botonEliminar);
-						div.appendChild(card);
+						botonEliminar.classList.add("btn", "btn-danger", "btn-eliminar-actividad");
+						let textoBotonEliminar = document.createTextNode("Eliminar");
+						botonEliminar.appendChild(textoBotonEliminar);
+						let modalFooter = document.createElement("div");
+						modalFooter.classList.add("modal-footer");
+						let botonCerrar = document.createElement("button");
+						botonCerrar.setAttribute("type", "button");
+						botonCerrar.classList.add("btn", "btn-secondary");
+						botonCerrar.setAttribute("data-dismiss", "modal");
+						let textoBoton = document.createTextNode("Cerrar");
+						//Se añaden unos elementos dentro de otros.
+						botonCerrar.appendChild(textoBoton);
+						modalFooter.appendChild(botonEliminar);
+						modalFooter.appendChild(botonCerrar);
+						modalHeader.appendChild(tituloModal);
+						modalContent.appendChild(modalHeader);
+						
+						modalContent.appendChild(modalBody);
+						modalContent.appendChild(modalFooter);
+						modalDialog.appendChild(modalContent);
+						modal.appendChild(modalDialog);
+						//Se añade el modal y el boton al DOM.
+						resultadosOtros.appendChild(modal);
 						resultadosOtros.appendChild(boton);
-						resultadosOtros.appendChild(div);
 						/* Se añade al evento de click al boton de eliminar para
 						que si se clicka llame a eliminarActividad y borre la actividad. */
 						botonEliminar.addEventListener('click', function() {
+							$('#modal' + res[i].id).modal('hide');
 							eliminarActividad(res[i].id);
 						});
 					}
@@ -368,7 +415,7 @@
 		 * @param id la id de la actividad.
 		 * 
 		 */
-		
+
 		function eliminarActividad(id) {
 			let url = '{{ url("/calendario") }}';
 			$.ajax({

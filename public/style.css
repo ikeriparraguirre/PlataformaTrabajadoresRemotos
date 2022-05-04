@@ -706,3 +706,6 @@ input[type="search"]::placeholder {
     text-align: center;
     display: none;
 }
+.btn-eliminar-actividad{
+    margin-right: 5% !important;
+}
