@@ -116,9 +116,13 @@
 
 <script>
     window.addEventListener('load', function() {
+        //Se capturan todos los botones de eliminar.
         let botonesEliminar = document.querySelectorAll(".eliminar-archivo");
+        //Se recorren todos los botones de eliminar.
         for (let i = 0; i < botonesEliminar.length; i++) {
+            //Si se clicka sobre un boton de eliminar.
             botonesEliminar[i].addEventListener('click', function() {
+                //Se crea la solicitud ajax.
                 let url = '{{ url("/archivos") }}';
                 let idArchivo = botonesEliminar[i].getAttribute("name");
                 $.ajax({
@@ -132,22 +136,31 @@
                         id: parseInt(idArchivo)
                     }
                 }).done(function(res) {
-                    let nombreModal = "#archivo" + botonesEliminar[i].getAttribute("name");
+                    //Se oculta el modal.
                     $("#archivo" + botonesEliminar[i].getAttribute("name")).modal('hide');
+                    //Si la respuesta es que el archivo se ha eliminado correctamente.
                     if (res == "Archivo eliminado correctamente.") {
+                        //Se recoge el div del mensaje correcto y se muestra el mensaje.
                         let eliminadoCorrectamente = document.querySelector(".eliminar-archivo-correctamente");
                         eliminadoCorrectamente.style.display = "block";
-                        document.querySelector(".archivo" + botonesEliminar[i].getAttribute("name")).remove();
                         eliminadoCorrectamente.innerText = "Archivo eliminado correctamente.";
+                        //Se elimina el resultado del DOM.
+                        document.querySelector(".archivo" + botonesEliminar[i].getAttribute("name")).remove();
                     } else if (res == "Error al eliminar el archivo.") {
+                        //Si la respuesta es que ha habido algun error.
+                        //Se recoge el div del mensaje de error y se muestra el mensaje.
                         let eliminadoError = document.querySelector(".error-eliminar-archivo");
                         eliminadoError.style.display = "block";
                         eliminadoError.innerText = "Error al eliminar el archivo.";
                     }
+
+                    //Se oculta en mensaje de error o correcto despues de 5 segundos.
                     setTimeout(function() {
+                        //Si el mensaje correcto esta mostrado se oculta.
                         if (document.querySelector(".eliminar-archivo-correctamente").innerText != "") {
                             document.querySelector(".eliminar-archivo-correctamente").style.display = "none";
                         }
+                        //Si el mensaje de error esta mostrado se oculta.
                         if (document.querySelector(".error-eliminar-archivo").innerText != "") {
                             document.querySelector(".error-eliminar-archivo").style.display = "none";
                         }

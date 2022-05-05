@@ -162,7 +162,6 @@
 			} else {
 				document.querySelector(".resultados-calendario").style.display = "block";
 			}
-
 		}, 500);
 		//Para que cuando se de en el boton de siguiente mes llame a hacerConsulta.
 		document.querySelector(".next-button").addEventListener('click', function() {

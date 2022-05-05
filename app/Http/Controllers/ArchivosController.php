@@ -14,12 +14,21 @@ use ValueError;
 class ArchivosController extends Controller
 {
 
+
     /**
      * 
      * Funcion que comprueba si la consulta es para eliminar un archivo no.
-     * Si la consulta es para eliminar un archivo se comprueba si la id es correcto.
+     * Si la consulta es para eliminar un archivo se comprueba si la id es correcta,
+     * si es asi se elimina el archivo de la base de datos y se devuelve el mensaje,
+     * si ha ocurrido algun error se muestra otro mensaje.
+     * Si la consulta no es para eliminar el archivo se busca en la base de datos todos
+     * los archivos que contengan la cadena buscada y se devuelve un array con todos los
+     * resultados. Si no se ha encontrado ningun resultados se devuelve un mensaje.
+     * @param request la solicitud con los datos.
+     * @return redireccion con el mensaje correspondiente.
      * 
      */
+
     public function index(Request $request)
     {
         $id = $request->id;
@@ -55,6 +64,7 @@ class ArchivosController extends Controller
             }
         }
     }
+
 
     /**
      * 
@@ -101,42 +111,6 @@ class ArchivosController extends Controller
             return redirect()->to('/subir')->with('errorSubida', "Nombre del archivo no valido.");
         }
     }
-
-
-    /**
-     * 
-     * Funcion para leer los archivos del servidor.
-     * Indicando el nombre en el input de buscar se comprueba si hay algun archivo en el servidor
-     * que contenga la cadena indicada en el input, si es asi se genera un array por cada archivo indicando
-     * el nombre, archivo y el tipo. Si el tipo es data:image se podra previsualizar la imagen, sino aparecera
-     * un icono de un archivo.
-     * Si no se ha encontrado ningún archivo se redireccionara a la pagina de archivos indicando que no se ha encontrado
-     * ningun archivo.
-     * Si se encuentra algun archivo se redireccionara a la pagina de archivos con el arrayResultados que seran todos los resultados
-     * a mostrar en la pagina.
-     * @return redirecciona a la pagina con el mensaje.
-     * 
-     */
-    /*
-    public function leerArchivos()
-    {
-        $busqueda = $_POST['busqueda'];
-        $resultado = DB::table('files')->where('nombre', 'like', "%$busqueda%")->get();
-        $arrayResultados = array();
-        $cadaArchivo = array();
-        for ($i = 0; $i < $resultado->count(); $i++) {
-            $cadaArchivo['nombre'] = $resultado[$i]->nombre;
-            $cadaArchivo['archivo'] = $resultado[$i]->archivo;
-            $cadaArchivo['tipo'] = explode('/', $resultado[$i]->archivo)[0];
-            $cadaArchivo['id'] = $resultado[$i]->id;
-            array_push($arrayResultados, $cadaArchivo);
-        }
-        if (count($arrayResultados) > 0) {
-            return redirect()->to('/archivos')->with('arrayResultados', $arrayResultados);
-        } else {
-            return redirect()->to('/archivos')->with('errorSinArchivos', 'No se ha encontrado ningún archivo.');
-        }
-    }*/
 
 
     /**

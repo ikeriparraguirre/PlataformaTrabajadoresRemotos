@@ -35,7 +35,7 @@ class UsuarioController extends Controller
         ], $customMessages);
         $usuario = User::create(request(['name', 'email', 'password']));
         Auth::login($usuario);
-        return redirect()->to('/archivos');
+        return redirect()->to('/archivos/all');
     }
 
 
@@ -56,7 +56,7 @@ class UsuarioController extends Controller
                 'message' => 'El correo o la contraseña no son correctas.'
             ]);
         } else {
-            return redirect()->to('/archivos');
+            return redirect()->to('/archivos/all');
         }
     }
 
