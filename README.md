@@ -62,3 +62,8 @@ Los errores mas comúnes son los siguientes.
 | <p align='center'>Nombre del archivo no valido.</p> | <p align='center'>Indica que el nombre del archivo no es valido, normalmente este error suele aparecer cuando el campo del nombre esta vacia.</p> |
 | <p align='center'>Error al subir el archivo. Archivo no valido.</p> | <p align='center'>Indica que el archivo no es valido, es decir, que no se puede subir al servidor, este error aparece por ejemplo si se intenta subir un archivo .exe</p> |
 | <p align='center'>Ya existe un archivo con este nombre en el servidor.</p> | <p align='center'>Indica que ya hay un archivo con el mismo nombre en el servidor, para evitar este error se cambia el nombre y ya.</p> |
+| <p align='center'>Error al eliminar el archivo</p> | <p align='center'>Indica que ha habido un error al borrar el archivo del servidor.</p> |
+| <p aling='center'>Nombre de la actividad incorrecta.</p> | <p align='center'>Indica que el nombre de la actividad no es correcta.</p> |
+| <p aling='center'>La descripcion es incorrecta.</p> | <p align='center'>Indica que la descripcion de la actividad no es correcta.</p> |
+| <p align='center'>La fecha es incorrecta.</p> | <p align='center'>Indica que la fecha de la actividad no es correcta.</p> |
+| <p align='center'>No se ha podido añadir la actividad</p> | <p align='center'>Indica que ha habido un error a la hora de subir la actividad a la base de datos.</p> |
