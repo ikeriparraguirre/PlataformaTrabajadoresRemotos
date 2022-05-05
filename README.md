@@ -40,6 +40,17 @@ Para poder descargar un archivo primero hay que iniciar sesion, si no tienes una
 Una vez ya registrado o iniciado sesion se tendrá acceso al sitio web y se te redirigirá a la pagina de archivos.<br>
 En esta pagina podrás buscar por nombre todos los archivos subidos al servidor, si haces una busqueda y los archivos devueltos son imagenes podras previsualizarlos antes de descargarlos. <br>
 Para descargar se pulsa sobre el boton azul de descargar. <br>
+### Ver actividades 📅
+Para poder ver tus actividades primero hay que iniciar sesion, si no tienes una cuenta te puedes registrar en la pagina de registro. <br>
+Una vez ya registrado o iniciado sesion se tendrá acceso al sitio web y pulsando sobre el icono del calendario se te redirigirá a la pagina donde puedes ver todas tus actividades. <br>
+En esta pagina podrás ver un calendario con un dia morado, que sera el dia de hoy y luego un dia con un azul oscuro, que sera el dia que ha seleccionado el usuario, pulsando sobre otro dia cambiara el seleccionado a otro. <br>
+Si hay alguna actividad para de hoy se mostrara debajo del calendario con un color rosa. <br>
+Si hay alguna actividad otro dia que no sea hoy se podra ver que el dia esta marcado con un color azul claro y pulsando sobre ese dia podremos ver las actividades.<br>
+### Añadir actividades ➕
+Para poder añadir actividades primero hay que iniciar sesion, si no tienes una cuenta te puedes registrar en la pagina de registro. <br>
+Una vez ya registrado o iniciado sesion se tendrá acceso al sitio web y pulsando sobre el icono del calendario se te redirigirá a la pagina donde puedes ver todas tus actividades, pulsando sobre el boton de añadir actividad se te redirigirá a la pagina donde puedes añadir las actividades. <br>
+En esta pagina hay un formulario donde para añadir una actividad se tenien que llenar todos los campos. <br>
+Una vez rellenados todos los campos, si pulsamos sobre el boton de + se añadira la actividad a la base de datos y se mostrara un mensaje indicando que la actividad se ha añadido correctamente, en cambio, si ha ocurrido un error se mostrara el mensaje de error en la pagina.
 ## Errores ❌
 Los errores mas comúnes son los siguientes.
 | Error | Explicación |
