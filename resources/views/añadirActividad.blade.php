@@ -5,7 +5,6 @@
     <title>Añadir Actividad</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ URL::asset('style-calendario.css') }}">
@@ -57,7 +56,7 @@
                 <a href="{{ url('/subir') }}"><i class="bi bi-cloud-arrow-up subir"></i></a>
             </div>
             <div class="segundo">
-                <a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
+                <a href="{{ url('/archivos/all') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
             </div>
             <div class="tercero">
                 <a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check actual"></i></a>

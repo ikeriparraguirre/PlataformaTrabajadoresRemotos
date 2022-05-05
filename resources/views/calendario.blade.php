@@ -129,7 +129,7 @@
 				<a href="{{ url('/subir') }}"><i class="bi bi-cloud-arrow-up subir"></i></a>
 			</div>
 			<div class="segundo">
-				<a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
+				<a href="{{ url('/archivos/all') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
 			</div>
 			<div class="tercero">
 				<a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check actual"></i></a>
@@ -156,6 +156,13 @@
 				hacerConsulta();
 				seleccionado = document.querySelector(".selected");
 			}
+			//Para que si no hay ninguna actividad se oculte el div de los resultados.
+			if (document.querySelector(".resultados-hoy").innerText == "" && document.querySelector(".resultados-otros").innerText == "") {
+				document.querySelector(".resultados-calendario").style.display = "none";
+			} else {
+				document.querySelector(".resultados-calendario").style.display = "block";
+			}
+
 		}, 500);
 		//Para que cuando se de en el boton de siguiente mes llame a hacerConsulta.
 		document.querySelector(".next-button").addEventListener('click', function() {
@@ -255,7 +262,12 @@
 						modalBody.classList.add("modal-body");
 						let parrafoBody = document.createElement("p");
 						let textoBody = document.createTextNode(res[i].descripcion);
+						let fechaBody = document.createElement("p");
+						fechaBody.classList.add("font-weight-bold");
+						let textoFechaBody = document.createTextNode("Fecha: " + res[i].fecha);
+						fechaBody.appendChild(textoFechaBody);
 						parrafoBody.appendChild(textoBody);
+						parrafoBody.appendChild(fechaBody);
 						modalBody.appendChild(parrafoBody);
 						let botonEliminar = document.createElement("button");
 						let textoBotonEliminar = document.createTextNode("Eliminar");
@@ -319,7 +331,12 @@
 						modalBody.classList.add("modal-body");
 						let parrafoBody = document.createElement("p");
 						let textoBody = document.createTextNode(res[i].descripcion);
+						let fechaBody = document.createElement("p");
+						fechaBody.classList.add("font-weight-bold");
+						let textoFechaBody = document.createTextNode("Fecha: " + res[i].fecha);
+						fechaBody.appendChild(textoFechaBody);
 						parrafoBody.appendChild(textoBody);
+						parrafoBody.appendChild(fechaBody);
 						modalBody.appendChild(parrafoBody);
 						let botonEliminar = document.createElement("button");
 						botonEliminar.setAttribute("type", "button");

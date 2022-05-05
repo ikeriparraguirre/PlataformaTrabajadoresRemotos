@@ -96,10 +96,6 @@ body {
         text-align: right;
     }
 
-    .bi-download {
-        vertical-align: top;
-    }
-
     /* Estilos para la pagina de subir archivos */
     .borde-subir-archivos {
         width: 60%;
@@ -201,9 +197,11 @@ body {
     }
 
     .bi-file-code::before {
-        font-size: 100%;
+        font-size: 80%;
         margin-top: 2%;
+        vertical-align: middle;
         vertical-align: -webkit-baseline-middle;
+        color: #FFFFFF;
     }
 
     .logo-calendario img {
@@ -375,11 +373,6 @@ body {
         text-align: right;
     }
 
-    .bi-download {
-        vertical-align: top;
-        font-size: 35px;
-    }
-
     /* Estilos para la pagina de subir */
     .subir-archivos {
         margin: 5%;
@@ -453,8 +446,10 @@ body {
     }
 
     .bi-file-code::before {
-        font-size: 200%;
+        font-size: 150%;
         margin-top: 2%;
+        color: #FFFFFF;
+        vertical-align: middle;
     }
 
     .navbar-calendario {
@@ -546,7 +541,7 @@ input[type="search"]::placeholder {
 
 .nombre-movimiento {
     display: inline-block;
-    width: 80%;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -708,4 +703,15 @@ input[type="search"]::placeholder {
 }
 .btn-eliminar-actividad{
     margin-right: 5% !important;
+}
+.modal-archivos, .modal-archivos:hover, .modal-archivos:active{
+    background-color: transparent;
+    border: 0;
+}
+.eliminar-archivo-correctamente, .error-eliminar-archivo{
+    display: none;
+    width: 40%;
+    margin: auto;
+    text-align: center;
+    font-size: 1.5rem;
 }

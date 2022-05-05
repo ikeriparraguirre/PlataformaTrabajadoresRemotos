@@ -58,7 +58,7 @@
                     <a href="{{ url('/subir') }}"><i class="bi bi-cloud-arrow-up actual"></i></a>
                 </div>
                 <div class="segundo">
-                    <a href="{{ url('/archivos') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
+                    <a href="{{ url('/archivos/all') }}"><i class="bi bi-cloud-arrow-down-fill archivos"></i></a>
                 </div>
                 <div class="tercero">
                     <a href="{{ url('/calendario') }}"><i class="bi bi-calendar-check calendario"></i></a>

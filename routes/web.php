@@ -17,6 +17,8 @@ Route::get('/', function () {
 Route::get('/archivos', function () {
     return view('archivos');
 })->middleware('auth');
+//Para que al entrar a la pestaña de archivos por defecto muestre todos los archivos.
+Route::get('/archivos/all', [ArchivosController::class, 'devolverArchivos'])->middleware('auth');
 Route::get('/registro', function () {
     return view('registro');
 })->middleware('guest');
@@ -37,6 +39,6 @@ Route::get('/añadirActividad', function(){
 Route::post('/', [UsuarioController::class, 'crearSesion'])->name('crearSesion');
 Route::post('/registro', [UsuarioController::class, 'registrarUsuario'])->name('registro.registrarUsuario');
 Route::post('/subir', [ArchivosController::class, 'subirArchivo']);
-Route::post('/archivos', [ArchivosController::class, 'leerArchivos']);
+Route::post('/archivos', [ArchivosController::class, 'index']);
 Route::post('/calendario', [CalendarioController::class, 'index']);
 Route::post('/añadirActividad', [CalendarioController::class, 'añadirActividad']);

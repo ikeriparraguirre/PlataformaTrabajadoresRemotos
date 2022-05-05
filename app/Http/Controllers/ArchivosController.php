@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Dotenv\Parser\Value;
 use ErrorException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Arr;
@@ -12,6 +13,48 @@ use ValueError;
 
 class ArchivosController extends Controller
 {
+
+    /**
+     * 
+     * Funcion que comprueba si la consulta es para eliminar un archivo no.
+     * Si la consulta es para eliminar un archivo se comprueba si la id es correcto.
+     * 
+     */
+    public function index(Request $request)
+    {
+        $id = $request->id;
+        $consulta = $request->consulta;
+        if ($consulta == "eliminar-archivo") {
+            if (!is_null($id) && trim($id) != "") {
+                try {
+                    DB::delete("DELETE FROM files WHERE id = $id");
+                    unset($request);
+                    return "Archivo eliminado correctamente.";
+                } catch (QueryException $th) {
+                    return "Error al eliminar el archivo.";
+                }
+            } else {
+                return redirect()->to('/archivos');
+            }
+        } else {
+            $busqueda = $_POST['busqueda'];
+            $resultado = DB::table('files')->where('nombre', 'like', "%$busqueda%")->get();
+            $arrayResultados = array();
+            $cadaArchivo = array();
+            for ($i = 0; $i < $resultado->count(); $i++) {
+                $cadaArchivo['nombre'] = $resultado[$i]->nombre;
+                $cadaArchivo['archivo'] = $resultado[$i]->archivo;
+                $cadaArchivo['tipo'] = explode('/', $resultado[$i]->archivo)[0];
+                $cadaArchivo['id'] = $resultado[$i]->id;
+                array_push($arrayResultados, $cadaArchivo);
+            }
+            if (count($arrayResultados) > 0) {
+                return redirect()->to('/archivos')->with('arrayResultados', $arrayResultados);
+            } else {
+                return redirect()->to('/archivos')->with('errorSinArchivos', 'No se ha encontrado ningún archivo.');
+            }
+        }
+    }
 
     /**
      * 
@@ -74,7 +117,7 @@ class ArchivosController extends Controller
      * @return redirecciona a la pagina con el mensaje.
      * 
      */
-
+    /*
     public function leerArchivos()
     {
         $busqueda = $_POST['busqueda'];
@@ -85,6 +128,37 @@ class ArchivosController extends Controller
             $cadaArchivo['nombre'] = $resultado[$i]->nombre;
             $cadaArchivo['archivo'] = $resultado[$i]->archivo;
             $cadaArchivo['tipo'] = explode('/', $resultado[$i]->archivo)[0];
+            $cadaArchivo['id'] = $resultado[$i]->id;
+            array_push($arrayResultados, $cadaArchivo);
+        }
+        if (count($arrayResultados) > 0) {
+            return redirect()->to('/archivos')->with('arrayResultados', $arrayResultados);
+        } else {
+            return redirect()->to('/archivos')->with('errorSinArchivos', 'No se ha encontrado ningún archivo.');
+        }
+    }*/
+
+
+    /**
+     * 
+     * Funcion para devolver todos los archivos del servidor.
+     * Esta funcion se ejecuta cuando se entra a la pagina archivos
+     * y muestra todos los archivos que hay en el servidor.
+     * @return redireccion junto con un array con todos los archivos.
+     * 
+     */
+
+    public function devolverArchivos()
+    {
+        $resultado = DB::table('files')->where('nombre', 'like', "%%")->get();
+        //return var_dump($resultado);
+        $arrayResultados = array();
+        $cadaArchivo = array();
+        for ($i = 0; $i < $resultado->count(); $i++) {
+            $cadaArchivo['nombre'] = $resultado[$i]->nombre;
+            $cadaArchivo['archivo'] = $resultado[$i]->archivo;
+            $cadaArchivo['tipo'] = explode('/', $resultado[$i]->archivo)[0];
+            $cadaArchivo['id'] = $resultado[$i]->id;
             array_push($arrayResultados, $cadaArchivo);
         }
         if (count($arrayResultados) > 0) {
