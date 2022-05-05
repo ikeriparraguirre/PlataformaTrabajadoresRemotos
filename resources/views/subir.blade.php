@@ -21,7 +21,7 @@
 <body>
     <div class="subir-archivos">
         <div class="logo-archivos text-center">
-        <a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision"></a>
+        <a href="{{ url('/archivos/all') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision"></a>
         </div>
         <form method="POST" class="formulario-subir" enctype="multipart/form-data">
             @csrf

@@ -16,7 +16,7 @@
 
 <body>
 	<div class="logo-calendario text-center">
-		<a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision"></a>
+		<a href="{{ url('/archivos/all') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision"></a>
 	</div>
 	<div class="col-md-12 calendario">
 		<div class="elegant-calencar d-md-flex">

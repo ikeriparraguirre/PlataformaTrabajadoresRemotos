@@ -13,7 +13,7 @@
 </head>
 
 <body>
-    <a href="{{ url('/') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-añadir-actividad"></a>
+    <a href="{{ url('/calendario') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-añadir-actividad"></a>
     <div class="añadir-actividad">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center">
