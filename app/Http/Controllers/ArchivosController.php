@@ -91,7 +91,6 @@ class ArchivosController extends Controller
                 try {
                     $convert_to_base64 = base64_encode(file_get_contents($file['tmp_name']));
                     $base64_image = "data:$tipoArchivo;base64," . $convert_to_base64;
-
                     //Para sacar la hora actual
                     date_default_timezone_set('Europe/Madrid');
                     $date = date('Y-m-d H:i:s');

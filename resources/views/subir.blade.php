@@ -21,7 +21,7 @@
 <body>
     <div class="subir-archivos">
         <div class="logo-archivos text-center">
-        <a href="{{ url('/archivos/all') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision"></a>
+            <a href="{{ url('/archivos/all') }}"><img src="{{ URL::asset('images/logo_tasiva.png') }}" class="logo-tasiva-archivos" alt="logotipo de la empresa Tasiva Vision"></a>
         </div>
         <form method="POST" class="formulario-subir" enctype="multipart/form-data">
             @csrf
@@ -37,8 +37,8 @@
             </div>
             <div class="boton-subir">
                 <button type="submit" class="btn-subir">
-                        <i class="bi bi-cloud-upload"></i>
-                        Subir
+                    <i class="bi bi-cloud-upload"></i>
+                    Subir
                 </button>
             </div>
             <div class="estado-archivo">
@@ -70,5 +70,6 @@
         </div>
 </body>
 <script src="{{ URL::asset('script.js') }}"></script>
+</script>
 
 </html>
