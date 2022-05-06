@@ -51,6 +51,7 @@ class CalendarioController extends Controller
      * Si ha habido algun error se redirige a la pagina indicando que ha habido un error.
      * @param Request la solicitud con los datos de la actividad.
      * @return redireccion a la pagina con el mensaje.
+     * 
      */
 
     public function añadirActividad(Request $request)
