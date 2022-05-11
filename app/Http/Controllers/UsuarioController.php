@@ -56,6 +56,7 @@ class UsuarioController extends Controller
                 'message' => 'El correo o la contraseña no son correctas.'
             ]);
         } else {
+            request()->session()->regenerate();
             return redirect()->to('/archivos/all');
         }
     }
